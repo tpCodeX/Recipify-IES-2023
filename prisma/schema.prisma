@@ -14,6 +14,7 @@ model User {
   id Int @id @default(autoincrement())
   email String @unique
   name String
+  password String
   role String @default("USER")
   posts Recipe[]
 }
@@ -26,6 +27,14 @@ model Recipe {
   authorID Int
   createdAt DateTime @default(now())
   updatedAt  DateTime   @updatedAt
+  categoria Categoria @relation(fields: [categoriaID],references: [id])
+  categoriaID Int
+}
+
+model Categoria {
+  id Int @id @default(autoincrement())
+  name String
+  recipes Recipe[]
 }
 
 
