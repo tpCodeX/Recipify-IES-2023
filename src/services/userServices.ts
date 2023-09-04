@@ -1,10 +1,11 @@
 import prisma from "@/libs/prisma"
+import { userInfo } from "@/interfaces/userInterfaces";
 
 class UserServices {
 
     async getUsers(){
-        const users = await prisma.user.findMany()
-        return users
+        const users:userInfo[] = await prisma.user.findMany()
+        return users as userInfo[];
     }
 };
 
