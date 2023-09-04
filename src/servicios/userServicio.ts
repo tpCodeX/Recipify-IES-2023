@@ -17,7 +17,14 @@ class UsuarioServicio {
         if (!userExist) {
             throw new Error("El mail ingresado no se ha podido encontrar.");
         }
-
+        const passMatch = await this.comparePassword(
+            password,
+            userExist.password
+          );
+          if (!passMatch) {
+            throw new Error("Contraseña Incorrecta.");
+          }
+        return userExist
     }
     async comparePassword(password:string,hashedPass:string){
         return await compare(password,hashedPass)
@@ -38,10 +45,16 @@ class UsuarioServicio {
                 }
             })
 
-            const nameExiste= userByName? true:false
-            const mailExiste= userByMail? true:false
+            const nameExiste= userByName ? true:false
+            const mailExiste= userByMail ? true:false
 
             return{nameExiste,mailExiste}
+    }
+    validarMail(email:string){
+        return !email || email==="" ? false : true
+    }
+    validarPass(pass:string){
+        return !pass||pass===""? false:true
     }
 
 }
