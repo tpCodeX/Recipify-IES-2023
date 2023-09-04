@@ -10,35 +10,3 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-<<<<<<< HEAD
-=======
-model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  name String
-  password String
-  role String @default("USER")
-  posts Recipe[]
-}
-
-model Recipe {
-  id Int @id @default(autoincrement())
-  title String
-  description String
-  ingredients String //SQLITE NO PERMITE LISTAS, ASI QUE VAMOS A TENER QUE USAR UN STRING SEPARADO POR COMAS HASTA PASARLO A MONGO XD
-  author User @relation(fields: [authorID],references: [id])
-  authorID Int
-  createdAt DateTime @default(now())
-  updatedAt  DateTime   @updatedAt
-  categoria Categoria @relation(fields: [categoriaID],references: [id])
-  categoriaID Int
-}
-
-model Categoria {
-  id Int @id @default(autoincrement())
-  name String
-  recipes Recipe[]
-}
-
-
->>>>>>> 8d266ca3f1f9b1f8311940014e486fa35dfc15fd
