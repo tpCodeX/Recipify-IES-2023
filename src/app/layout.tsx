@@ -13,7 +13,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
         <main className="grid-layout">
           <Menu/>
         {children}
-          <Galeria/>
+          <Galeria/>{/*No se porque me sale error */}
         </main>
         </body>
     </html>

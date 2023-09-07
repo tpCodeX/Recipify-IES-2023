@@ -13,24 +13,10 @@ export async function POST(request) {
     data: {
       title,
       description,
+      ingredients,
+      authorID
     },
   });
 
   return NextResponse.json(newRecipe);
 }
-
-// const { id } = request.body;
-// const createCartService = new UserServices(); // Utiliza el servicio de creación del carrito
-// try {
-//   await createCartService.create(id); // Utiliza el método create del servicio
-//   response.render('./create/message', { message:
-//     return
-//     <>
-//     <h1>Producto agregado al carrito exitosamente</h1>
-//     </>
-//   })
-// } catch (err) {
-//   response.render("./productos/message", {
-//     message: `Error al agregar producto al carrito: ${err.message}`
-//   });
-// }

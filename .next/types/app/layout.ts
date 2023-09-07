@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // File: C:\Users\javi2\Desktop\trabajo final\Recipify-IES-2023\src\app\layout.tsx
-=======
-// File: C:\Users\geron\Downloads\PROYECTO FINAL\Recipify-IES-2023\src\app\layout.tsx
->>>>>>> 596cc2d02e2136ab159f4d6f6e24381d449437f2
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
