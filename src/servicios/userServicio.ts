@@ -42,7 +42,17 @@ class UsuarioServicio {
         });
         return updatedUser;
       }
-   
+    async getUserEmail(email: string){
+        const usuario = await prisma.user.findUnique({
+            where: {
+                email: email
+            }
+        })
+        if (!usuario) {
+            throw new Error(`Usuario con email ${email} no se ha encontrado`);
+        }
+        return usuario;
+    }
     async comparePassword(password:string,hashedPass:string){
         return await compare(password,hashedPass)
     }
@@ -124,4 +134,4 @@ class UsuarioServicio {
       
           
 }
-export default UserServices;
+export default UsuarioServicio;
