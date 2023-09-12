@@ -1,0 +1,10 @@
+.search-item-container{
+    height: 5rem;
+    width: 22.5rem;
+    border: solid rgba(107, 105, 105, 0.418) 2px;
+    margin-top:10px;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+}

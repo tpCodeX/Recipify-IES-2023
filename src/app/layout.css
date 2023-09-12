@@ -1,6 +1,7 @@
 @import url(./variables.css);
 
 body {
+  font-family: 'Lucida Grande', sans-serif;
   background-color: var(--blanco-mate);
   box-sizing: border-box;
 }

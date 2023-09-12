@@ -1,5 +1,9 @@
 const RecetasContainer=()=>{
-    return <h1>Recetas</h1>
+    return(
+    <main className="main-section">
+        
+    </main>
+    )
 }
 
 export default RecetasContainer
