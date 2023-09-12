@@ -1,0 +1,26 @@
+.recipe-card-item{
+    box-sizing: border-box;
+    width: 100%;
+    color:white;
+    height: 10rem;
+    border-radius: 20px;
+    /* border: red solid 3px; */
+    background-color: var(--color-primario-oscurencio);
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.recipe-card-info{
+    width: 70%;
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    padding-right: 20px;
+    justify-content: center;
+}
+
+.recipe-card-photo{
+    object-fit: cover;
+    width: 30%;
+}

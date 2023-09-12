@@ -2,5 +2,7 @@
     margin-left: 1rem;
     border-radius: 20px;
     height: 30vh;
-    background-color: blue;
+    background-color: var(--color-primario-oscurencio);
   }
+
+  

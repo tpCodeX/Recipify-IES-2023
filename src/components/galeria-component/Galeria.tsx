@@ -1,3 +1,5 @@
+import './Galeria.css'
+
 const Galeria = ()=>{
     return <section className="galeria-section">
     <div className="galeria-item"></div>

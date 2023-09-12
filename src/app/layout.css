@@ -20,11 +20,11 @@ body {
     box-shadow: 0 0 5px rgba(76, 76, 76, 0.374);
     background-color: rgb(255, 255, 255);
     overflow: hidden;
-    padding: 3rem;
     width: 100%;
     height: calc(100vh - 2rem);
     display: flex;
     flex-flow: column nowrap;
+    padding: 2rem;
     gap: 5rem;
   }
 
@@ -39,24 +39,4 @@ body {
   }
 
 
-.galeria-section {
-  box-shadow: 0 0 5px rgba(76, 76, 76, 0.374);
-  border-radius: 20px;
-  margin-right: 1rem;
-  background-color: rgb(255, 255, 255);
-  overflow: hidden;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  gap:3rem;
-  height: 75vh;
-}
 
-.galeria-item {
-  margin: 0 1.5rem 0 1.5rem;
-  border-radius: 15px;
-  width: calc(100% - 2rem);
-  height: calc((100% - 2rem )/4);
-  background-color: rgba(128, 0, 128, 0.45);
-}
