@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import "./loginEstilo.css"
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
-// import UsuarioServicio from '@/servicios/userServicio';
+
 
 
 
@@ -11,11 +11,7 @@ function LoginComponent() {
 
   const {handleSubmit,register}=useForm()
   const [error, setError]= useState(false)
-  // let services=new UsuarioServicio()
-  // const onSubmit= handleSubmit(async data=> {
-  // const respuesta= await services.loginUser(data.email,data.password)
-  // console.log(respuesta)
-  // })
+ 
   
   return (
     <div className="wrapper fadeInDown">

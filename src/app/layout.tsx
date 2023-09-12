@@ -9,7 +9,7 @@ export default function RootLayout({children}:{children:React.ReactNode}) {
     <html lang="es">
       <body>
         <NavBar/>
-        <main className="grid-layout">
+        <main className="">
         {children}
         </main>
         </body>
