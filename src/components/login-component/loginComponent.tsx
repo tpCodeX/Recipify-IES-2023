@@ -14,13 +14,13 @@ function LoginComponent() {
  
   
   return (
-    <div className="wrapper fadeInDown">
+    <div className=" wrapper fadeInDown ">
       {error && (
     <div className="alert alert-danger" role="alert">
     Email o password ingresado es incorrecto
     </div>
   )}
-      <div id="formContent">
+      <div id="formContent" >
         <p className="font lead fw-normal mb-0 me-3 mt-3 letra">Sign in with</p>
          
         <div className="or-divider">
