@@ -2,7 +2,8 @@ import Image from 'next/image'
 import logo from '../../../public/images/navbar-icon.svg'
 import './NavBar.css'
 import SearchBar from './searchbar-component/SearchBar'
-import SigninButton from '../signinButton'
+import SigninButton from '../botonSignin/signinButton'
+
 
 
 const NavBar = () => {
