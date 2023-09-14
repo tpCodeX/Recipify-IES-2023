@@ -12,7 +12,7 @@ function SigninButton() {
     <div className='flex gap-4 ml-auto'>
    {/* <p className='text-sky-600' style={{color: "white", fontWeight:"bold"}}>{session.user.name}</p> */}
     <p className='text-sky-600' style={{color: "white"}}>{session.user.name}</p>
-    <button onClick={()=>signOut()} className='btn btn-danger'>
+    <button onClick={()=>signOut({callbackUrl: "/"})} className='btn btn-danger'>
         Cerrar Sesión
     </button>
     </div>

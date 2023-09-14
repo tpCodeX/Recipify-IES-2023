@@ -39,7 +39,10 @@ const handler= NextAuth({
           }
         }
       })
-  ]
+  ],
+  pages:{
+    signIn: "/api/signin"
+  }
 })
 
 export {handler as GET, handler as POST}
