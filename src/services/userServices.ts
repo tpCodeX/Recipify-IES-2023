@@ -98,25 +98,12 @@ class UserServices {
             });
         return updatedUser;
       }
-      async loginUser(email: string, password: string){
-        const userExist = await prisma.user.findFirst({ where: { email } });
-        if (!userExist) {
-            throw new Error("El mail ingresado no se ha podido encontrar.");
-        }
-        const passMatch = await this.comparePassword(
-            password,
-            userExist.password
-          );
-          if (!passMatch) {
-            throw new Error("Contraseña Incorrecta.");
-          }
-        return userExist
-    }
+
      async registerUser(data: userInfo) {
          const comparedData = await this.usuarioExiste(data);
     
          if (comparedData.mailExiste || comparedData.nameExiste) {
-           throw new Error("El usuario ya existe xD");
+           throw new Error("El usuario ya existe");
          }
          const hashedPass = await this.hashPassword(data.password);
          const toPass = hashedPass.toString();

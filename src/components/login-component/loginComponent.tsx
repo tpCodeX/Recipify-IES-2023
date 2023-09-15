@@ -1,5 +1,6 @@
 "use client"
 import React, { useRef, useState } from 'react'
+import Link from "next/link";
 import "./loginEstilo.css"
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
@@ -70,9 +71,9 @@ function LoginComponent() {
         {/* Remind Password */}
         <div id="formFooter">
           ¿No tienes una cuenta?{' '}
-          <a className="font underlineHover red" href="./add">
+          <Link className="font underlineHover red" href="/api/register">
             Registrarse
-          </a>
+          </Link>
         </div>
       </div>
     </div>
