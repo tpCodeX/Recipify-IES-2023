@@ -4,45 +4,49 @@ import "./loginEstilo.css"
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react'
-
-
+import { useRouter } from 'next/navigation';
+import {Alert}  from '@mui/material';
+import LinearProgress from '@mui/material/LinearProgress';
+import Box from '@mui/material/Box';
 function LoginComponent() {
+  const router= useRouter()
   const userName = useRef("");
   const pass = useRef("");
   const {handleSubmit,register}=useForm()
   const [error, setError]= useState(false)
+  const [cargando, setCargando]= useState(false)
   const onSubmit= async ()=>{
+     setCargando(true)
      const result= await signIn("credentials",{
       username: userName.current,
       password: pass.current,
-      redirect: true,
-      callbackUrl: "/recetas"
+      redirect: false,
+      callbackUrl: "/recetas",
      })
+     if(result?.ok){
+      setCargando(false)
+      if (result.url) {
+        router.push(result.url);
+     }else{
+      setError(true)
+     }
+    }
    }
   
   return (
-//     <form action="/login" onSubmit={handleSubmit(onSubmit)}>
-//   <div className="mb-3">
-//     <label htmlFor="username" className="form-label">Email address</label>
-//     <input type="email" className="form-control" id="username" aria-describedby="emailHelp" onChange={(e) => (userName.current = e.target.value)}/>
-//   </div>
-//   <div className="mb-3">
-//     <label htmlFor="password" className="form-label">Password</label>
-//     <input type="password" className="form-control" id="password" onChange={(e) => (pass.current = e.target.value)}/>
-//   </div>
-//   <div className="mb-3 form-check">
-//     {/* <input type="checkbox" className="form-check-input" id="exampleCheck1"/> */}
-//     {/* <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label> */}
-//   </div>
-//   <button type="submit" className="btn btn-primary">Submit</button>
-// </form>
-
-    <div className=" wrapper fadeInDown ">
-      {error && (
-    <div className="alert alert-danger" role="alert">
-    Email o password ingresado es incorrecto
-    </div>
+<>
+{cargando && (
+   <Box sx={{ width: '100%' }}>
+   <LinearProgress />
+ </Box>
   )}
+    <div className=" wrapper fadeInDown " style={{ maxHeight: '500px' }}>
+    {error && (
+    <div className='mb-2'>
+    <Alert severity="error">Correo/password ingresado es incorrecto</Alert>
+   </div>
+  )}
+ 
       <div id="formContent" >
         <p className="font lead fw-normal mb-0 me-3 mt-3 letra">Sign in with</p>
          
@@ -51,7 +55,6 @@ function LoginComponent() {
           <p className="font or-divider-text">or</p>
           <div className="or-divider-line"></div>
         </div>
-        {/* Login Form   onSubmit={onSubmit} */   }
         <form action="/login"  onSubmit={handleSubmit(onSubmit)}> 
           <input type="text" id="username" className="fadeIn second "
           placeholder="username" onChange={(e) => (userName.current = e.target.value)}/>
@@ -73,6 +76,8 @@ function LoginComponent() {
         </div>
       </div>
     </div>
+    </>
+
   );
 }
 
