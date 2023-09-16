@@ -37,5 +37,83 @@
         "updatedAt":  "2-2-2",
         "categoria": "poshito",
         "categoriaID": 3
+    },
+    {
+        "id": 4,
+        "photo":"https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg",
+        "title": "Empanadas de poio :v",
+        "description": "paso1 bla bla bla, paso 2 bla bla bla, paso 3 bla bla bla, paso 4 bla bla bla",
+        "ingredients": "i1,i2,i3,i4,i5",
+        "author": "Autor Receta 3",
+        "authorID": 3,
+        "createdAt": "0-0-0",
+        "updatedAt":  "2-2-2",
+        "categoria": "poshito",
+        "categoriaID": 3
+    },
+    {
+        "id": 5,
+        "photo":"https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg",
+        "title": "Empanadas de poio :v",
+        "description": "paso1 bla bla bla, paso 2 bla bla bla, paso 3 bla bla bla, paso 4 bla bla bla",
+        "ingredients": "i1,i2,i3,i4,i5",
+        "author": "Autor Receta 3",
+        "authorID": 3,
+        "createdAt": "0-0-0",
+        "updatedAt":  "2-2-2",
+        "categoria": "poshito",
+        "categoriaID": 3
+    },
+    {
+        "id": 6,
+        "photo":"https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg",
+        "title": "Empanadas de poio :v",
+        "description": "paso1 bla bla bla, paso 2 bla bla bla, paso 3 bla bla bla, paso 4 bla bla bla",
+        "ingredients": "i1,i2,i3,i4,i5",
+        "author": "Autor Receta 3",
+        "authorID": 3,
+        "createdAt": "0-0-0",
+        "updatedAt":  "2-2-2",
+        "categoria": "poshito",
+        "categoriaID": 3
+    },
+    {
+        "id": 7,
+        "photo":"https://www.pequerecetas.com/wp-content/uploads/2017/06/ensalada-de-pasta-receta.jpg",
+        "title": "Empanadas de poio :v",
+        "description": "paso1 bla bla bla, paso 2 bla bla bla, paso 3 bla bla bla, paso 4 bla bla bla",
+        "ingredients": "i1,i2,i3,i4,i5",
+        "author": "Autor Receta 3",
+        "authorID": 3,
+        "createdAt": "0-0-0",
+        "updatedAt":  "2-2-2",
+        "categoria": "poshito",
+        "categoriaID": 3
+    },
+    {
+        "id": 8,
+        "photo":"https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg",
+        "title": "Empanadas de poio :v",
+        "description": "paso1 bla bla bla, paso 2 bla bla bla, paso 3 bla bla bla, paso 4 bla bla bla",
+        "ingredients": "i1,i2,i3,i4,i5",
+        "author": "Autor Receta 3",
+        "authorID": 3,
+        "createdAt": "0-0-0",
+        "updatedAt":  "2-2-2",
+        "categoria": "poshito",
+        "categoriaID": 3
+    },
+    {
+        "id": 9,
+        "photo":"https://www.pequerecetas.com/wp-content/uploads/2023/01/empanadas-de-carne-argentinas-tradicionales.jpeg",
+        "title": "WAKAWAKASd",
+        "description": "paso1 bla bla bla, paso 2 bla bla bla, paso 3 bla bla bla, paso 4 bla bla bla",
+        "ingredients": "i1,i2,i3,i4,i5",
+        "author": "Autor Receta 3",
+        "authorID": 3,
+        "createdAt": "0-0-0",
+        "updatedAt":  "2-2-2",
+        "categoria": "poshito",
+        "categoriaID": 3
     }
 ]
