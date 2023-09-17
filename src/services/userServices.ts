@@ -5,7 +5,23 @@ import { compare } from 'bcrypt';
 import { hash } from 'bcrypt';
 class UserServices {
 
-    
+   async compararPassword(password:string, repeatPassword:string){
+    const resultado= password == repeatPassword ? true : false
+    return resultado
+   }
+   
+    async existeMailEnBaseDedatos(email:string){
+      const emailExiste=  await prisma.user.findFirst({
+        where: {email : email}
+     })
+     return emailExiste
+    }
+    async existeNameEnBaseDedatos(name:string){
+      const nameExiste=  await prisma.user.findFirst({
+        where: {name : name}
+     })
+     return nameExiste
+    }
     validarMail(email:string){
         return !email || email==="" ? false : true
     }
@@ -58,24 +74,6 @@ class UserServices {
     async hashPassword(pass:string){
         return await hash(pass,10)
     };
-    async usuarioExiste({name,email}:userInfo){
-
-            const userByName= await prisma.user.findFirst({
-                where:{
-                    name: name
-                }
-            });
-            const userByMail= await prisma.user.findFirst({
-                where:{
-                    email:email
-                }
-            })
-
-            const nameExiste= userByName ? true:false
-            const mailExiste= userByMail ? true:false
-
-            return{nameExiste,mailExiste}
-    }
    
     async updateUser(data: userInfo) {
         const userExiste = await prisma.user.findFirst({ where: { id: data.id } });
@@ -100,11 +98,6 @@ class UserServices {
       }
 
      async registrarUser(data: userInfo) {
-         const comparedData = await this.usuarioExiste(data);
-    
-         if (comparedData.mailExiste || comparedData.nameExiste) {
-           throw new Error("El usuario ya existe");
-         }
          const hashedPass = await this.hashPassword(data.password);
          const passwordEncriptadaAString = hashedPass.toString();
          const newUser = await prisma.user.create({

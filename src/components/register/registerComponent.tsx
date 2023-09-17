@@ -9,6 +9,7 @@ const RegisterComponent = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const router = useRouter();
 
@@ -24,6 +25,7 @@ const RegisterComponent = () => {
           name,
           email,
           password,
+          repeatPassword
         }),
       }
     );
@@ -58,7 +60,7 @@ const RegisterComponent = () => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="test"
+          placeholder="nombre"
           name="name"
           className="form-control mb-2"
           value={name}
@@ -66,7 +68,7 @@ const RegisterComponent = () => {
         />
         <input
           type="email"
-          placeholder="test@test.com"
+          placeholder="email"
           name="email"
           className="form-control mb-2"
           value={email}
@@ -79,6 +81,14 @@ const RegisterComponent = () => {
           className="form-control mb-2"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="repetir contraseña"
+          name="repeatPassword"
+          className="form-control mb-2"
+          value={repeatPassword}
+          onChange={(event) => setRepeatPassword(event.target.value)}
         />
         <button
           type="submit"
