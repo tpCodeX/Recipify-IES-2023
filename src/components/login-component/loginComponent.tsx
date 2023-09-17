@@ -1,6 +1,5 @@
 "use client"
 import React, { useRef, useState } from 'react'
-import Link from "next/link";
 import "./loginEstilo.css"
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
@@ -41,7 +40,7 @@ function LoginComponent() {
    <LinearProgress />
  </Box>
   )}
-    <div className=" wrapper fadeInDown " style={{ maxHeight: '500px' }}>
+    <div className=" wrapper fadeInDown " >
     {error && (
     <div className='mb-2'>
     <Alert severity="error">Correo/password ingresado es incorrecto</Alert>
@@ -71,9 +70,9 @@ function LoginComponent() {
         {/* Remind Password */}
         <div id="formFooter">
           ¿No tienes una cuenta?{' '}
-          <Link className="font underlineHover red" href="/api/register">
+          <a className="font underlineHover red" href="/api/register">
             Registrarse
-          </Link>
+          </a>
         </div>
       </div>
     </div>

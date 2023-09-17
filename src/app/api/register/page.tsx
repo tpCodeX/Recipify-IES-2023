@@ -1,5 +1,6 @@
 
-import RegisterComponent from '@/components/register/register'
+
+import RegisterComponent from '@/components/register/registerComponent'
 import React from 'react'
 
 function Register() {

@@ -1,4 +1,4 @@
-
+import {BadRequestException} from '@nestjs/common';
 import { userInfo } from "@/interfaces/userInterfaces";
 import prisma from '@/libs/prisma'
 import { compare } from 'bcrypt';
@@ -99,19 +99,19 @@ class UserServices {
         return updatedUser;
       }
 
-     async registerUser(data: userInfo) {
+     async registrarUser(data: userInfo) {
          const comparedData = await this.usuarioExiste(data);
     
          if (comparedData.mailExiste || comparedData.nameExiste) {
            throw new Error("El usuario ya existe");
          }
          const hashedPass = await this.hashPassword(data.password);
-         const toPass = hashedPass.toString();
+         const passwordEncriptadaAString = hashedPass.toString();
          const newUser = await prisma.user.create({
            data: {
              email: data.email.toString(),
              name: data.name.toString(),
-             password: toPass,
+             password: passwordEncriptadaAString,
            },
          });
     
