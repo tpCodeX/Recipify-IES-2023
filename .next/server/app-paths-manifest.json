@@ -1,9 +1,9 @@
 {
   "/page": "app/page.js",
+  "/recetas/page": "app/recetas/page.js",
   "/api/user/route": "app/api/user/route.js",
   "/api/register/page": "app/api/register/page.js",
   "/api/login/route": "app/api/login/route.js",
-  "/recetas/page": "app/recetas/page.js",
   "/api/signin/page": "app/api/signin/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }

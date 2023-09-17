@@ -10,12 +10,12 @@ const RegisterComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [shouldRedirect, setShouldRedirect] = useState(false);
   const router = useRouter();
-
+  const handleRedirect = (path:string) => {
+    router.push(path);
+  };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const res = await fetch("http://localhost:3000/api/user",{
         method: "POST",
         headers: {
@@ -29,28 +29,20 @@ const RegisterComponent = () => {
         }),
       }
     );
-  
+    console.info("estado de resultado "+res.status)
     const responseAPI = await res.json();
 
     if (res.status != 201) {
       setError(responseAPI.message);
-      setShouldRedirect(true)
-    }else{
-      setShouldRedirect(false);
-    }
-    
-    if (!shouldRedirect) {
-      router.push("/api/register")
+      handleRedirect("/api/register");
     }else{
       const result = await signIn("credentials", {
-      username:email,
+      username: email,
       password: password,
-      redirect: false,
-      callbackUrl: "/recetas"
+      redirect: false
     });
-      router.push("/recetas")
-      
-    }
+     handleRedirect("/recetas");
+  }
   
   };
 
