@@ -22,12 +22,14 @@ const MainPage = () => {
     useEffect(() => {
         setRecipesPerPage(3)
         setRecipes(arrayRecetas)
-    },[])
+    },[arrayRecetas])
 
     return (
         <>
-        <Pagination currentPage={currentPage} recipesPerPage={recipesPerPage} setCurrentPage={setCurrentPage} totalRecipes={recipes.length} ></Pagination>
-        <main className=" contianer flex flex-col flex-wrap h-screen pb-0 mb-0 gap-5">
+        <div className="container p-5">
+        <Pagination currentPage={currentPage} recipesPerPage={recipesPerPage} setCurrentPage={setCurrentPage} totalRecipes={recipes.length}></Pagination>
+        </div>
+        <main className="  flex flex-col flex-wrap h-screen items-center">
             {recipes.map((recipe: iRecipeInfo) => (
                 <RecipeCard recipeInfo={recipe} key={recipe.id}/>
                 )).slice(firstIndex, lastIndex)}
