@@ -5,9 +5,9 @@ import Menu from "@/components/menu-component/Menu"
 
 const RecetasLayout =({children}:{children:React.ReactNode})=>{
     return <>
-        <Menu/>
+        {/* <Menu/> */}
         {children}
-        <Galeria/>
+        {/* <Galeria/> */}
         </>
 }
 

@@ -1,3 +1,13 @@
+.isSticky{
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+.link-centered{
+  text-align: center !important;
+}
+
 .menu-section {
   padding: 2rem;
   box-sizing: border-box;

@@ -1,6 +1,4 @@
-import Menu from '@/components/menu-component/Menu'
 import './layout'
-import Galeria from '@/components/galeria-component/Galeria'
 
 
 // console.log(users)
@@ -8,13 +6,10 @@ import Galeria from '@/components/galeria-component/Galeria'
 const MainSection = ()=>{
      
   return<>      
-    <Menu/>
-    <section className="main-section">
-    <div className="main-section-item">
-    </div>
-    <div className="main-section-item"></div>
-  </section>
-  <Galeria/>
+    <section className="container h-screen bg-emerald-800">
+      
+    </section>
+   
     </> 
 }
 export default MainSection

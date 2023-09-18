@@ -1,5 +1,11 @@
 @import url("../../app/variables.css");
 
+.sticky-navbar{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
 .navbar-container{
     box-sizing: border-box;
    background-color: var(--color-primario-oscurencio);

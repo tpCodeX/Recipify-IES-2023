@@ -6,7 +6,7 @@ import RecipeCard from "@/components/recipeCard-component/RecipeCard"
 import Pagination from "@/components/pagination-component/Pagination"
 import { iRecipeInfo } from "@/interfaces/recipeInterfaces"
 
-const RecetasContainer = () => {
+const MainPage = () => {
 
     
     const [recipes, setRecipes] = useState([] as iRecipeInfo[])
@@ -26,14 +26,14 @@ const RecetasContainer = () => {
 
     return (
         <>
-        <main className="main-section main-section-recipes">
-            <Pagination currentPage={currentPage} recipesPerPage={recipesPerPage} setCurrentPage={setCurrentPage} totalRecipes={recipes.length} ></Pagination>
+        <Pagination currentPage={currentPage} recipesPerPage={recipesPerPage} setCurrentPage={setCurrentPage} totalRecipes={recipes.length} ></Pagination>
+        <main className=" contianer flex flex-col flex-wrap h-screen pb-0 mb-0 gap-5">
             {recipes.map((recipe: iRecipeInfo) => (
                 <RecipeCard recipeInfo={recipe} key={recipe.id}/>
                 )).slice(firstIndex, lastIndex)}
         </main>
-        </>
+                </>
     )
 }
 
-export default RecetasContainer
+export default MainPage
