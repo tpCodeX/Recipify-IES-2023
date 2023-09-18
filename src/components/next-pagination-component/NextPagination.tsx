@@ -1,5 +1,5 @@
 import { iPaginationData } from "@/interfaces/paginationInterface";
-import { Pagination, PaginationCursor, PaginationCursorProps } from "@nextui-org/react";
+import { Pagination } from "@nextui-org/react";
 export default function NextPagination({totalRecipes,recipesPerPage}:iPaginationData) {
  
   const pageNumbers= []
