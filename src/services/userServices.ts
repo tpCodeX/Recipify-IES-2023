@@ -72,6 +72,7 @@ class UserServices {
         return await compare(password,hashedPass)
     }
     async hashPassword(pass:string){
+// 2do parametro se representa la cantidad de rondas de hashing que se utilizarán para generar el hash mientras sea un n° más grande significa más dificil de descifrar
         return await hash(pass,10)
     };
    

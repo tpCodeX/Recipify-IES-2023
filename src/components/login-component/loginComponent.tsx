@@ -43,7 +43,7 @@ function LoginComponent() {
     <div className=" wrapper fadeInDown " >
     {error && (
     <div className='mb-2'>
-    <Alert severity="error">Correo/password ingresado es incorrecto</Alert>
+    <Alert severity="error">Correo o password ingresado es incorrecto</Alert>
    </div>
   )}
  

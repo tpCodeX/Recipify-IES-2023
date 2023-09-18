@@ -16,7 +16,7 @@ const RegisterComponent = () => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const res = await fetch("http://localhost:3000/api/user",{
+    const res = await fetch("http://localhost:3000/api/userback",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

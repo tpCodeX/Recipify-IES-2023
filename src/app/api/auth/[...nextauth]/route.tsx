@@ -44,5 +44,5 @@ const handler= NextAuth({
     signIn: "/api/signin"
   }
 })
-
+//obtendremos solicitudes get y post
 export {handler as GET, handler as POST}

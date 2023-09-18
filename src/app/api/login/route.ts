@@ -1,5 +1,6 @@
 import prisma from "@/libs/prisma"
 import * as bcrypt from "bcrypt"
+//creamos una interfaz para el cuerpo de la api de inicio de sesión
 interface RequestBody{
     username:string,
     password: string
@@ -12,7 +13,9 @@ export async function POST(request:Request){
             email:body.username
         }
     })
+// si el usuario no es nulo y la contraseña es igual a la proporcionada en el cuerpo del req
     if(user && ( await bcrypt.compare(body.password,user.password))){
+//Apartammos password y colocamos el resto de la info del user en un objeto
         const {password, ...userWithoutPass}=user
         return new Response(JSON.stringify(userWithoutPass))
     }else{
