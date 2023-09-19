@@ -29,9 +29,9 @@ const categorias = [
 
 const Galeria = () => {
   return (
-    <aside className='container py-10'>
-      <h3 className='text-2xl text-center'>Galeria de Categorías</h3>
-      <div className="flex flex-col h-full justify-evenly items-center gap-10">
+    <aside className='container'>
+      <h3 className='text-2xl text-center mt-5 mb-3'>Galeria de Categorías</h3>
+          <div className="flex flex-col h-full text-center gap-10">
         {categorias.map((categoria: itemProps) => {
           return <GaleriaItem key={categoria.title} icon={categoria.icon} title={categoria.title}></GaleriaItem>
 

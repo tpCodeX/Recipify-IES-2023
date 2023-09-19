@@ -29,10 +29,13 @@ const MainPage = () => {
         <div className="container p-5">
         <Pagination currentPage={currentPage} recipesPerPage={recipesPerPage} setCurrentPage={setCurrentPage} totalRecipes={recipes.length}></Pagination>
         </div>
-        <main className="  flex flex-col flex-wrap h-screen items-center">
+                <main className="  flex flex-col    h-screen   overflow-hidden">
+            <div className="w-30 flex flex-row flex-nowrap gap-3 lg:gap-5 lg:justify-evenly">
             {recipes.map((recipe: iRecipeInfo) => (
                 <RecipeCard recipeInfo={recipe} key={recipe.id}/>
                 )).slice(firstIndex, lastIndex)}
+
+            </div>
         </main>
                 </>
     )

@@ -4,8 +4,8 @@ import { iRecipeInfo } from "@/interfaces/recipeInterfaces"
 const RecipeCard = ({ recipeInfo }: { recipeInfo: iRecipeInfo }) => {
 
     return (
-        <div className="     flex w-96 flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
-            <div className="     mx-4 mt-4 h-80 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
+        <div className="flex box-border  w-auto flex-col rounded-xl bg-white  text-gray-700 shadow-md m-0">
+            <div className="     mx-4 mt-4 h-80 overflow-hidden rounded-xl bg-white  text-gray-700">
                 <img
                     src={recipeInfo.photo}
                     className="h-full w-full object-cover"

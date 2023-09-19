@@ -24,7 +24,7 @@ const Menu = () => {
   ]
  
   return (
-    <aside className={`rounded-xl  box-border w-full text-center p-3 ml-auto mr-auto mt-20`}>
+    <aside className={`rounded-xl  box-border :w-full md:w-fit text-center p-3 ml-auto mr-auto mt-20`}>
       <div className='text-4xl mb-5'>Menú</div>
       <div className='flex flex-col gap-5 text-center'>
         {menuItems.map((item)=>{
