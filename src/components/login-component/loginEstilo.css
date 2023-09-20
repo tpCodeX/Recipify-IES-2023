@@ -23,7 +23,7 @@ h2 {
   margin: 40px 8px 10px 8px; 
   color: #cccccc;
 } */
-
+/* .my-component { */
 .font{
     font-family: DancingScript-VariableFont_wght;
     font-weight: bold;
@@ -443,8 +443,8 @@ h2 {
       box-sizing: border-box;
   }
   
-  body, html {
-      height: 100%;
+  .body {
+      height: 100vh;
       font-family: Poppins-Regular, sans-serif;
   }
   
@@ -886,7 +886,7 @@ h2 {
   .ho{
       color: aqua;
   }
-  body {
+  .body {
       /* background: linear-gradient(132deg,  #FFC107, #FF9800, #f44336, #E91E63, #9C27B0, #673AB7, #3F51B5, #2196F3,#03A9F4, #00BCD4, #009688, #4CAF50, #FFC107, #FF9800); */
       background: linear-gradient(132deg,  #c7a579 , #863905 , #f88f49 , #FF9800, #deb887 , #00BCD4, #FFC107, #FF9800);
       background-size: 400% 400%;
@@ -945,8 +945,8 @@ h2 {
   {
   background: #1E88E5;
   }
-  body
+  .body
   {
   margin: 0;
   }
-  
+/* } */

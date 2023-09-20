@@ -3,11 +3,12 @@ import React, { useRef, useState } from 'react'
 import "./loginEstilo.css"
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
 import {Alert}  from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
+import NavBar from '../navbar-component/NavBar';
 function LoginComponent() {
   const router= useRouter()
   const userName = useRef("");
@@ -35,6 +36,7 @@ function LoginComponent() {
   
   return (
 <>
+<div className='body'>
 {cargando && (
    <Box sx={{ width: '100%' }}>
    <LinearProgress />
@@ -75,6 +77,7 @@ function LoginComponent() {
           </a>
         </div>
       </div>
+    </div>
     </div>
     </>
 
