@@ -1,3 +1,4 @@
+import { signJwtAccessToken } from "@/libs/jwt"
 import prisma from "@/libs/prisma"
 import * as bcrypt from "bcrypt"
 //creamos una interfaz para el cuerpo de la api de inicio de sesión
@@ -17,7 +18,12 @@ export async function POST(request:Request){
     if(user && ( await bcrypt.compare(body.password,user.password))){
 //Apartammos password y colocamos el resto de la info del user en un objeto
         const {password, ...userWithoutPass}=user
-        return new Response(JSON.stringify(userWithoutPass))
+        const accessToken= signJwtAccessToken(userWithoutPass)
+        const result={
+            ...userWithoutPass,
+            accessToken
+        }
+        return new Response(JSON.stringify(result))
     }else{
         return new Response(JSON.stringify(null))
     }
