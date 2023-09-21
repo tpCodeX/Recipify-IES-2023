@@ -24,6 +24,13 @@ h2 {
   color: #cccccc;
 } */
 /* .my-component { */
+/* .navbar{
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+} */
 .font{
     font-family: DancingScript-VariableFont_wght;
     font-weight: bold;
@@ -444,9 +451,10 @@ h2 {
   }
   
   .body {
-      height: 100vh;
+    height: 85vh;
       font-family: Poppins-Regular, sans-serif;
-  }
+      display: grid;
+    }
   
   /*---------------------------------------------*/
   a {
@@ -891,6 +899,7 @@ h2 {
       background: linear-gradient(132deg,  #c7a579 , #863905 , #f88f49 , #FF9800, #deb887 , #00BCD4, #FFC107, #FF9800);
       background-size: 400% 400%;
       animation: BackgroundGradient 30s ease infinite;
+      position: fixed;
   }
   
   @keyframes BackgroundGradient {
@@ -947,6 +956,10 @@ h2 {
   }
   .body
   {
-  margin: 0;
+    top: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
   }
 /* } */

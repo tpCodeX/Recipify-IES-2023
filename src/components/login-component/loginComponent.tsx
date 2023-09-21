@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import {Alert}  from '@mui/material';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
-import NavBar from '../navbar-component/NavBar';
+// import NavBar from '../navbar-component/NavBar';
 function LoginComponent() {
   const router= useRouter()
   const userName = useRef("");
@@ -38,7 +38,7 @@ function LoginComponent() {
 <>
 <div className='body'>
 {cargando && (
-   <Box sx={{ width: '100%' }}>
+   <Box sx={{ width: '100%', top: 0}}>
    <LinearProgress />
  </Box>
   )}

@@ -3,13 +3,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 const handler= NextAuth({
   providers: [
+//se ejecutan varias veces no una sola vez en cada petición lo llama
     CredentialsProvider({
-        // The name to display on the sign in form (e.g. "Sign in with...")
         name: "Credentials",
-        // `credentials` is used to generate a form on the sign in page.
-        // You can specify which fields should be submitted, by adding keys to the `credentials` object.
-        // e.g. domain, username, password, 2FA token, etc.
-        // You can pass any HTML attribute to the <input> tag through the object.
         credentials: {
           username: { label: "Username", type: "text", placeholder: "jsmith" },
           password: { label: "Password", type: "password" }
@@ -40,6 +36,23 @@ const handler= NextAuth({
         }
       })
   ],
+//tendremos un objeto en la devolución de la llamada se ejecuta a medida que se va ////
+//estableciendo la cookie en el navegador
+  callbacks: {
+//user son los datos del usuario
+    async jwt({ token, user }) {
+//combinaremos token con el user
+      return { ...token, ...user };
+    },
+//definimos el objeto de session 
+//ya le pasamos unimos los datos pero no se muestra en la sessión x eso esto
+    async session({ session, token }) {
+//dado que el tipo de token es jwt y el user es un objeto con atributos string lo 
+//ponemos tipo any para no tener error
+      session.user = token as any;
+      return session;
+    },
+  },
   pages:{
     signIn: "/api/signin"
   }

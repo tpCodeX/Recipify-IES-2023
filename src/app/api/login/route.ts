@@ -1,6 +1,8 @@
 import { signJwtAccessToken } from "@/libs/jwt"
 import prisma from "@/libs/prisma"
 import * as bcrypt from "bcrypt"
+import { NextResponse } from "next/server"
+
 //creamos una interfaz para el cuerpo de la api de inicio de sesión
 interface RequestBody{
     username:string,
@@ -8,6 +10,7 @@ interface RequestBody{
 }
 
 export async function POST(request:Request){
+    const response= NextResponse.next()
     const body:RequestBody= await request.json()
     const user= await prisma.user.findFirst({
         where:{
@@ -18,12 +21,19 @@ export async function POST(request:Request){
     if(user && ( await bcrypt.compare(body.password,user.password))){
 //Apartammos password y colocamos el resto de la info del user en un objeto
         const {password, ...userWithoutPass}=user
+//creamos el token
         const accessToken= signJwtAccessToken(userWithoutPass)
+//el operador de propagación ... se usa para copiar todos los datos del objeto 
         const result={
             ...userWithoutPass,
             accessToken
         }
-        return new Response(JSON.stringify(result))
+
+//esto el cliente lo recibiria sin embargo al enviarlo al cuerpo de la petición significa que el frontend va a tener que almacenarlo el mismo
+    //   response.cookies.set("valor","1")   
+    return new Response(JSON.stringify(result))
+
+    
     }else{
         return new Response(JSON.stringify(null))
     }
