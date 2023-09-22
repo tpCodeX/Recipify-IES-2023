@@ -1,10 +1,10 @@
-import { verifyJwt } from '@/libs/jwt';
+import {  verifyJwt } from '@/libs/jwt';
 import prisma from '@/libs/prisma'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
-
-export async function GET(request:Request){
+export async function GET(request:NextRequest){
 //verificamos si el token está en el encabezado
+// let response = NextResponse.next()
     const accessToken= request.headers.get("authorization")
 //si el token no esta o no es válido (no podemos verificarlo) devolvemos un 401
     if(!accessToken || !verifyJwt(accessToken)){

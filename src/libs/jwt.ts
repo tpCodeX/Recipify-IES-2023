@@ -1,4 +1,5 @@
 import jwt,{ JwtPayload } from "jsonwebtoken";
+import { NextRequest } from "next/server";
 
 interface SignOption {
 //fecha de caducidad del token
@@ -31,3 +32,18 @@ export function verifyJwt(token:string){
         return null;
     }
 }
+
+// export function extractTokenHeader(request:NextRequest){
+//     const accessTokenWithBearer=request.headers.get("authorization")
+//     if (accessTokenWithBearer) {
+//         const [bearer, token] = accessTokenWithBearer.split(' ');
+//         return token
+//       } else {
+//         return new Response(JSON.stringify({
+//             error: "No autorizado"
+//         }),
+//         {
+//          status: 401
+//         })
+//       }
+// }
