@@ -7,40 +7,10 @@
 body {
   font-family: 'Lucida Grande', sans-serif;
   background-color: var(--blanco-mate);
-  
+  min-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
 }
-
-.grid-layout {
-  box-sizing: border-box;
-  margin-top: 2rem;
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: 15% 60% 20%;
-}
-
-.main-section {
-    border-radius: 20px;
-    box-sizing: border-box;
-    box-shadow: .5px .5px 5px rgba(76, 76, 76, 0.374);
-    background-color: rgb(255, 255, 255);
-    overflow: hidden;
-    width: 100%;
-    height: calc(100vh - 2rem);
-    display: flex;
-    flex-flow: column nowrap;
-    padding: 2rem;
-    gap: 5rem;
-  }
-
-  
-  .main-section-item {
-    box-shadow: 0 0 5px rgba(76, 76, 76, 0.374);
-    border-radius: 15px;
-    width: 100%;
-    min-height: 10rem;
-    max-height: 20rem;
-    background-color: rgba(122, 126, 126, 0.247);
-  }
 
 
 

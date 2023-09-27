@@ -1,5 +1,5 @@
 "use client"
-
+import './page.css'
 import { useEffect, useState } from "react"
 import arrayRecetas from './recetas.json'
 import RecipeCard from "@/components/recipeCard-component/RecipeCard"
@@ -20,17 +20,18 @@ const MainPage = () => {
 
 
     useEffect(() => {
-        setRecipesPerPage(3)
+        setRecipesPerPage(6)
+        console.log(window.innerWidth)
+        console.log(window.innerHeight)
+
         setRecipes(arrayRecetas)
     },[arrayRecetas])
 
     return (
         <>
-        <div className="container p-5">
+        <main className="w-screen">
         <Pagination currentPage={currentPage} recipesPerPage={recipesPerPage} setCurrentPage={setCurrentPage} totalRecipes={recipes.length}></Pagination>
-        </div>
-                <main className="  flex flex-col    h-screen   overflow-hidden">
-            <div className="w-30 flex flex-row flex-nowrap gap-3 lg:gap-5 lg:justify-evenly">
+            <div className="flex flex-col md:flex-row gap-3 md:flex-wrap md:justify-evenly md:gap-10 p-3 sm:p-0">
             {recipes.map((recipe: iRecipeInfo) => (
                 <RecipeCard recipeInfo={recipe} key={recipe.id}/>
                 )).slice(firstIndex, lastIndex)}

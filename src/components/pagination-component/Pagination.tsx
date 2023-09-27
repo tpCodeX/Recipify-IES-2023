@@ -28,18 +28,18 @@ const Pagination = ({ recipesPerPage, currentPage, setCurrentPage, totalRecipes 
 
     return (
 
-        <nav className="pagination is-centered is-large" role="navigation" aria-label="pagination">
-            <button className="pagination-next" disabled={currentPage >= pageNumbers.length ? true : false} onClick={handleNextPage}>Siguiente</button>
-            <button className="pagination-previous" disabled={currentPage === 1 ? true : false} onClick={handlePreviousPage}>Anterior</button>
-            <ul className="pagination-list">
+        <nav className="w-screen flex text-[#333] items-center text-2xl md:text-3x md:h-[70px] justify-evenly" role="navigation" aria-label="pagination">
+                <button className="" disabled={currentPage === 1 ? true : false} onClick={handlePreviousPage}>Anterior</button>
+            <ul className="flex md:gap-6 p-2">
                 {pageNumbers.map((numPage: number, index) => {
                     return (
-                        <li key={index}>
-                            <a className={`pagination-link ${numPage === currentPage ? 'is-current' : ""}`} onClick={() => handlePage(numPage)}>{numPage}</a>
+                        <li key={index} className={` w-8 text-center rounded-md cursor-pointer ${numPage === currentPage ? 'bg-emerald-200' : ""}`}>
+                            <a className="text-[#333]" onClick={() => handlePage(numPage)}>{numPage}</a>
                         </li>
                     )
                 })}
             </ul>
+                <button className="" disabled={currentPage >= pageNumbers.length ? true : false} onClick={handleNextPage}>Siguiente</button>
         </nav>
 
     )

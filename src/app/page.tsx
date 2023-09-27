@@ -1,15 +1,13 @@
+"use client"
 import './layout'
-
-
-// console.log(users)
-
+import './page.css'
 const MainSection = ()=>{
      
-  return<>      
-    <section className="container h-screen bg-emerald-800">
+  return <main className="min-h-screen min-w-full">
+          
       
-    </section>
-   
-    </> 
+    
+          </main>
+    
 }
 export default MainSection

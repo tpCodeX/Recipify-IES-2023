@@ -1,17 +1,4 @@
 @import url("../../app/variables.css");
-.pagination-link.is-current{
-    background-color:var(--color-botones);
-    
-}
-.pagination-next{
-    background-color:var(--color-botones);
-}
-.pagination-next:disabled{
-    background-color: var(--color-primario-transparente);
-}
-.pagination-previous{
-    background-color:var(--color-botones);
-}
-.pagination-previous:disabled{
-    background-color: var(--color-primario-transparente);
-}
+
+
+
