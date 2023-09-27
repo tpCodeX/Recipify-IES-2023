@@ -3,7 +3,7 @@ import logo from '../../../public/images/navbar-icon.svg'
 import logoMobile from '../../../public/images/iconito.png'
 import menuIcon from '../../../public/images/menu-icon.svg'
 import './NavBar.css'
-import {Link, Input, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, button } from '@nextui-org/react'
+import {Link, Input, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from '@nextui-org/react'
 import Image from 'next/image'
 // import MenuList from './menu-list/MenuList'
 
