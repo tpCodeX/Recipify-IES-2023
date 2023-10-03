@@ -1,1 +1,3 @@
-{}
+{
+  "/api/recipes/recipe/page": "app/api/recipes/recipe/page.js"
+}
