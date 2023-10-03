@@ -4,24 +4,39 @@
 
 // import ProductComponent from '@/components/createProduct/receta';
 import ProductComponent from '@/components/createProduct/receta';
-import React, { useState } from 'react'
+import { useSession } from 'next-auth/react';
+import React, { useState,useEffect } from 'react'
 
 function Recipe() {
-
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
+  const [categorias, setCategorias] = useState([]); 
+  useEffect(() => {
+    const fetchCategorias = async () => {
+      const res = await fetch("http://localhost:3000/api/recipes/categorias");
+      const data = await res.json();
+      setCategorias(data)
+    };
+    fetchCategorias();
+  }, []);
+  const {data: session}= useSession()
   const onSubmit= async (event: React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
-    const name=((event.currentTarget.elements.namedItem("name") as HTMLInputElement).value)
-    const email=((event.currentTarget.elements.namedItem("email") as HTMLInputElement).value)
+    const titulo=((event.currentTarget.elements.namedItem("titulo") as HTMLInputElement).value)
+    const descripcion=((event.currentTarget.elements.namedItem("descripcion") as HTMLInputElement).value)
+    const ingredientes=((event.currentTarget.elements.namedItem("ingredientes") as HTMLInputElement).value)
+    const categoria=((event.currentTarget.elements.namedItem("categoria") as HTMLInputElement).value)
+    const idUsuario = session?.user['id']
+    // console.log("dentroo")
     const res = await fetch("http://localhost:3000/api/recipes",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          email
+          titulo,
+          descripcion,
+          ingredientes,
+          categoria,
+          idUsuario
         }),
       }
     );
@@ -29,7 +44,7 @@ function Recipe() {
 
   return (
     <>
-    <ProductComponent onSubmit={onSubmit}/>
+    <ProductComponent onSubmit={onSubmit} categorias={categorias}/>
     </>
    )
 }

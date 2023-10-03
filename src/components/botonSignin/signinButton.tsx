@@ -14,6 +14,7 @@ function SigninButton() {
   if(session && session.user){
     return (
       <>
+      <Link style={{color: 'white'}}href={"/api/recipes/recipe"}>Crear Receta</Link>
       <Link style={{color: 'white'}}href={"/dashboard"}>Dashboard</Link>
     <div className='flex gap-4 ml-auto'>
     <p className='text-sky-600' style={{color: "white"}}>{session.user.name}</p>
