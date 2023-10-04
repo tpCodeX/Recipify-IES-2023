@@ -3,7 +3,7 @@ import React, { useState,useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function ProductComponent({ onSubmit, categorias }) {
-  // console.log(categorias)
+
   return (
     <form onSubmit={(event) => onSubmit(event)}>
       <div className="input-group input-group-lg">
@@ -22,17 +22,12 @@ function ProductComponent({ onSubmit, categorias }) {
       </div>
 
       <br />
-      {/* <select className="form-select border border-dark" aria-label="Default select example" name="categoria"> */}
-        {/* <option value>Elegir categoria</option> */}
-        {/* <option value="Saludable">Saludable</option>
-        <option value="Vegana">Vegana</option>
-        <option value="Italiana">Italiana</option>
-      </select> */}
+
 
 <select className="form-select border border-dark" aria-label="Default select example" name="categoria">
         <option value="">Elegir categoria</option>
         {categorias.map((categoria) => (
-          <option key={categoria.id}>{categoria.name}</option>
+          <option key={categoria.id} value={categoria.id}>{categoria.name}</option>
         ))}
       </select>
       <br />

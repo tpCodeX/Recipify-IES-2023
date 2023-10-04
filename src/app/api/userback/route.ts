@@ -11,7 +11,7 @@ interface userInfo{
     repeatPassword: string,
     role:string
 }
-
+//funcion para registro usuario
 export async function POST (request:Request){
 
    const usuarioServicio= new UserServices()

@@ -5,13 +5,15 @@
 // import ProductComponent from '@/components/createProduct/receta';
 import ProductComponent from '@/components/createProduct/receta';
 import { useSession } from 'next-auth/react';
-import React, { useState,useEffect } from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useState,useEffect} from 'react'
 
 function Recipe() {
-  const [categorias, setCategorias] = useState([]); 
+  const [categorias, setCategorias] = useState([]);
+  const router= useRouter() 
   useEffect(() => {
     const fetchCategorias = async () => {
-      const res = await fetch("http://localhost:3000/api/recipes/categorias");
+      const res = await fetch("http://localhost:3000/api/categorias");
       const data = await res.json();
       setCategorias(data)
     };
@@ -25,7 +27,7 @@ function Recipe() {
     const ingredientes=((event.currentTarget.elements.namedItem("ingredientes") as HTMLInputElement).value)
     const categoria=((event.currentTarget.elements.namedItem("categoria") as HTMLInputElement).value)
     const idUsuario = session?.user['id']
-    // console.log("dentroo")
+
     const res = await fetch("http://localhost:3000/api/recipes",{
         method: "POST",
         headers: {
@@ -40,6 +42,9 @@ function Recipe() {
         }),
       }
     );
+    if(res.ok){
+      router.push("/recetas")
+    }
   };
 
   return (

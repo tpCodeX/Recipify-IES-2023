@@ -1,3 +1,4 @@
+import RecipeServices from "@/services/recipeServices"
 import { NextResponse } from "next/server"
 
 interface RequestBody{
@@ -16,11 +17,11 @@ export async function POST(request:Request){
     const ingredientes=body.ingredientes
     const categoria=body.categoria
     const idUsuario=body.idUsuario
-    console.log("titulo: "+titulo)
-    console.log("descripcion: "+descripcion)
-    console.log("ingredientes: "+ingredientes)
-    console.log("categoria: "+categoria)
-    console.log("idUsuario "+idUsuario)
+    const photo="imagen"
+    const recipeServicio= new RecipeServices()
+
+    recipeServicio.addRecipe(titulo,descripcion,ingredientes,categoria,idUsuario,photo)
+
     return NextResponse.json(
             {message:"bieeen"},
             { status: 200 }

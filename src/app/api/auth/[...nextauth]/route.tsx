@@ -54,7 +54,7 @@ const handler= NextAuth({
     },
   },
   pages:{
-    signIn: "/api/signin"
+    signIn: "/api/login/signin"
   }
 })
 //obtendremos solicitudes get y post
