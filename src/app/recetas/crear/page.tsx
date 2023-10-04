@@ -1,29 +1,61 @@
-"use client"
-import {useForm} from 'react-hook-form';
+import React from "react";
+import { useForm } from "react-hook-form";
 
-const FormCrearReceta = ()=>{
 
-    const {handleSubmit,register}=useForm();
-
-    const onSubmit = handleSubmit(data=>{
-        console.log(data);
-    })
-
+function RecipeForm() {
+    const { handleSubmit, register,formState:{errors}} = useForm();
+  
+    const onSubmit = (data: any) => {
+      console.log(data); // Puedes enviar estos datos a tu servidor o realizar acciones adicionales aquí
+    };
+  
     return (
-        <main className="flex flex-col justify-start items-center text-center m-auto p-5 mt-4 min-h-screen w-screen xl:w-[800px] bg-red-200">
-            <h2 className="text-3xl">¡ Compartí una receta con la comunidad !</h2>
-            <section>
-                <form onSubmit={onSubmit} className="flex flex-col mt-[35px] text-left w-[350px]">
-                    <label className='text-2xl' htmlFor="">¿Cómo se llama tu receta?</label>
-                    <input type="text" className='text-xl' placeholder="Arroz con leche..." {...register("title")} />
-            <div className="mt-3 h-[1px] w-full"/>
-                    <label className='text-2xl mt-[25px]' htmlFor="">¿Cómo se hace?</label>
-                    <textarea className='w-full text-2xl' placeholder='Describe tu receta y los pasos a seguir...'></textarea>
-                </form>
-            </section>
-
-        </main>
-    )
-}
-
-export default FormCrearReceta
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
+          <label>Nombre de Receta</label>
+          <input type="text" {...register("title", {required: true, maxLength: 30} )} />
+          {errors.nombre?.type === 'required' && <p> El Titulo es requerido </p>}
+          {errors.nombre?.type === 'maxLength' && <p> El maximo de caracteres del campo es de 30 </p>}
+        </div>
+        <div>
+          <label>Categoría</label>
+          <select{...register("category")}>
+              <option>Entrada</option>
+              <option>Plato principal</option>
+              <option>Guarnición</option>
+              <option>Postres</option>
+              <option>Otros</option>
+          </select>
+      
+        </div>
+  
+        
+  
+        <div>
+          <label >Descripción</label>
+          
+          <input type="text" {...register("description" ),{required: true}} />
+        </div>
+  
+        <div>
+          <label >Ingredientes</label>
+         
+          <input type="text" {...register("ingredients" ),{required: true}} />
+          
+        </div>
+        <div>
+          <label>Imagen</label>
+          <input type="file" {...register("photo" )} />
+      
+        </div>
+  
+  
+        <div>
+          <button type="submit">Guardar Receta</button>
+        </div>
+      </form>
+    );
+  }
+  
+  export default RecipeForm;
+  
