@@ -8,5 +8,7 @@ export interface userInfo{
     id?:number,
     email:string,
     name:string,
+    password:string,
+    country:string,
     role:string,
 }
