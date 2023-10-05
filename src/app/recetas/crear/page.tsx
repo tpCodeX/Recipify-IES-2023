@@ -6,7 +6,7 @@ function RecipeForm() {
     const { handleSubmit, register,formState:{errors}} = useForm();
   
     const onSubmit = (data: any) => {
-      console.log(data); // Puedes enviar estos datos a tu servidor o realizar acciones adicionales aquí
+      console.log(data);
     };
   
     return (
