@@ -7,6 +7,7 @@ import Image from 'next/image'
 import SearchBar from './searchbar-component/SearchBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import SignInButton from '../botonSignin/SigninButton'
 
 // import MenuList from './menu-list/MenuList'
 
@@ -30,7 +31,7 @@ const NavBar = () => {
                     </DropdownTrigger>
                     <DropdownMenu  aria-label="Menu Actions" variant="faded">
                         <DropdownItem key="LogIn/LogOut" className="h-14 gap-3">
-                            <p className="font-semibold">Ingresar</p>
+                            <SignInButton inString='Iniciar Sesión' outString='Cerrar Sesión'/>
                         </DropdownItem>
                         <DropdownItem key="recetas"><Link >Recetas</Link></DropdownItem>
                         <DropdownItem key="contact"><Link>Contáctanos</Link></DropdownItem>
