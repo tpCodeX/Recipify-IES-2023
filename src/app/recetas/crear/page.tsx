@@ -1,10 +1,9 @@
 "use client"
 import {useForm} from 'react-hook-form';
 
-const FormCrearReceta = ()=>{
+const FormCrearReceta = ()=> {
 
     const {handleSubmit,register}=useForm();
-
     const onSubmit = handleSubmit(data=>{
         console.log(data);
     })
@@ -21,7 +20,6 @@ const FormCrearReceta = ()=>{
                     <textarea className='w-full text-2xl' placeholder='Describe tu receta y los pasos a seguir...'></textarea>
                 </form>
             </section>
-
         </main>
     )
 }
