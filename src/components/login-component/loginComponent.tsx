@@ -1,13 +1,14 @@
 "use client"
 import React, { useRef, useState } from 'react'
 import "./loginEstilo.css"
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+// import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { useForm } from 'react-hook-form';
 import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
-import {Alert}  from '@mui/material';
-import LinearProgress from '@mui/material/LinearProgress';
-import Box from '@mui/material/Box';
+import Link from 'next/link';
+// import {Alert}  from '@mui/material';
+// import LinearProgress from '@mui/material/LinearProgress';
+// import Box from '@mui/material/Box';
 // import NavBar from '../navbar-component/NavBar';
 function LoginComponent() {
   const router= useRouter()
@@ -37,15 +38,11 @@ function LoginComponent() {
   return (
 <>
 <div className='body'>
-{cargando && (
-   <Box sx={{ width: '100%', top: 0}}>
-   <LinearProgress />
- </Box>
-  )}
+
     <div className=" wrapper fadeInDown " >
     {error && (
     <div className='mb-2'>
-    <Alert severity="error">Correo o password ingresado es incorrecto</Alert>
+    <p style={{color: "red"}}>Correo o password ingresado es incorrecto</p>
    </div>
   )}
  
@@ -72,9 +69,9 @@ function LoginComponent() {
         {/* Remind Password */}
         <div id="formFooter">
           ¿No tienes una cuenta?{' '}
-          <a className="font underlineHover red" href="/api/register">
+          <Link className="font underlineHover red" href={'/api/register'}>
             Registrarse
-          </a>
+          </Link>
         </div>
       </div>
     </div>
