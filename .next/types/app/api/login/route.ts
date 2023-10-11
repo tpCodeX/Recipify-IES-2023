@@ -1,4 +1,4 @@
-// File: C:\Users\geron\Downloads\PROYECTO FINAL\Recipify-IES-2023\src\app\api\login\route.ts
+// File: /home/enzo/Documentos/Facultad/programacion III/Recipify-IES-2023/src/app/api/login/route.ts
 import * as entry from '../../../../../src/app/api/login/route.js'
 import type { NextRequest } from 'next/server.js'
 

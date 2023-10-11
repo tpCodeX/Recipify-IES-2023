@@ -62,9 +62,9 @@ function LoginComponent() {
           <input type="submit" className="boton fadeIn fourth mt-4" value="Iniciar Sesión" />
         </form>
         <p className="small mb-0 pb-lg-2">
-          <a className="font underlineHover" href="#!">
+          <Link className="font underlineHover" href={"/api/password/frontEmail"}>
             He olvidado la contraseña
-          </a>
+          </Link>
         </p>
         {/* Remind Password */}
         <div id="formFooter">

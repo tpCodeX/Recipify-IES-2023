@@ -1,20 +1,20 @@
 {
   "pages": {
+    "/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
+    ],
     "/error": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/error.js"
     ],
-    "/page": [
+    "/api/password/frontEmail/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
-    "/recetas/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/recetas/page.js"
+      "static/chunks/app/api/password/frontEmail/page.js"
     ],
     "/api/login/signin/page": [
       "static/chunks/webpack.js",
@@ -22,11 +22,20 @@
       "static/css/app/api/login/signin/page.css",
       "static/chunks/app/api/login/signin/page.js"
     ],
-    "/api/login/signin/[id]/page": [
+    "/api/password/frontEmail/success/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/api/login/signin/[id]/page.css",
-      "static/chunks/app/api/login/signin/[id]/page.js"
+      "static/chunks/app/api/password/frontEmail/success/page.js"
+    ],
+    "/api/password/frontEmail/success/[token]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/password/frontEmail/success/[token]/page.js"
+    ],
+    "/recetas/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/recetas/page.js"
     ],
     "/recetas/layout": [
       "static/chunks/webpack.js",
@@ -34,16 +43,11 @@
       "static/css/app/recetas/layout.css",
       "static/chunks/app/recetas/layout.js"
     ],
-    "/layout": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/layout.css",
-      "static/chunks/app/layout.js"
-    ],
-    "/api/register/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/register/page.js"
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ]
   }
 }
