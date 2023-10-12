@@ -3,23 +3,47 @@ import { userInfo } from "@/interfaces/userInterfaces";
 import prisma from '@/libs/prisma'
 import { compare } from 'bcrypt';
 import { hash } from 'bcrypt';
+import { NextResponse } from 'next/server';
 class UserServices {
-//   async validarPasswordYRepeatPassword(password:string, repeatPassword?:string){
-//     if(!password || password===""){
-//         throw new BadRequestException('El password es obligatorio');
-//     }
-//     if(!repeatPassword || repeatPassword===""){
-//         throw new BadRequestException('El repeat password es obligatorio');
-//     }
-//     if(password !== repeatPassword){
-//         throw new BadRequestException('El password y el repeat password deben ser iguales');
-//     }
-// }
-   async compararPassword(password:string, repeatPassword?:string){
+   validarCampos(name:string,email:string ,password:string, repeatPassword?:string){
+    if(name=="" || email== "" ||password == "" || repeatPassword == ""){
+      throw new Error("Todos los campos son obligatorios")
+    }
+   }
+    validarEmail(email:string){
+    return !email || email==="" ? false : email.includes("@")
+  }
+  async comprobarEmailSinoError(email:string){
+    if(!this.validarEmail(email)){
+      throw new Error("El email debe contener @")
+  }
+  }
+  compararPassword(password:string, repeatPassword?:string){
     const resultado= password == repeatPassword ? true : false
     return resultado
    }
-   
+  compararPasswordYrepeatPassword(password:string, repeatPassword?:string){
+    const resultado=this.compararPassword(password,repeatPassword)
+    if(!resultado){
+      throw new Error("Las contraseñas deben ser iguales")
+    }
+   }
+   async existNameDatabase(name:string){
+    const nameExiste=  await prisma.user.findFirst({
+      where: {name : name}
+   })
+    if(nameExiste){
+      throw new Error ("El nombre ingresado existe en la base de datos")
+    }
+  }
+   async existEmailDatabase(email:string){
+    const emailExiste=  await prisma.user.findFirst({
+      where: {email : email}
+   })
+    if(emailExiste){
+      throw new Error ("El email ingresado existe en la base de datos")
+    }
+  }
     async existeMailEnBaseDedatos(email:string){
       const emailExiste=  await prisma.user.findFirst({
         where: {email : email}
@@ -87,27 +111,21 @@ class UserServices {
     };
    
     async updateUser(data: userInfo) {
-        // console.log("llego a update")
+        this.validarCampos(data.name,data.email,data.password,data.repeatPassword)
+        this.compararPasswordYrepeatPassword(data.password,data.repeatPassword)
+        await this.comprobarEmailSinoError(data.email)
+        await this.existNameDatabase(data.name)
+        await this.existEmailDatabase(data.email)
         const idNumber=Number(data.id)
-        // await this.validarPasswordYRepeatPassword(data.password,data.repeatPassword)
-        const userExiste = await prisma.user.findFirst({ where: { id: idNumber } });
-        if (!userExiste) {
-          throw new Error("El usuario no existe.");
-        }
-        const comparedName = 
-        userExiste.name === data.name ? userExiste.name : data.name;
-        const comparedEmail = 
-        userExiste.email === data.email ? userExiste.email : data.email;
         const newHashedPassword = await this.hashPassword(data.password);
         const updatedUser = await prisma.user.update({
             where: { id: idNumber },
              data: {
-                email: comparedEmail,
-                name: comparedName,
+                email: data.email,
+                name: data.name,
                 password: newHashedPassword
               },
             });
-        console.log(updatedUser)
         return updatedUser;
       }
 

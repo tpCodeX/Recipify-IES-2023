@@ -4,7 +4,6 @@ import { useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 function UserPerfil({id,onSubmit,name,email,error}) {
 
-
   return (
     <div className="container mt-3 ">
     <div className="card p-3 text-center border border-dark">
@@ -22,7 +21,7 @@ function UserPerfil({id,onSubmit,name,email,error}) {
       <h4>Editar perfil</h4>
       {error && (
     <div className='mb-2'>
-    <p style={{color: "red"}}>Correo o password ingresado es incorrecto</p>
+    <p style={{color: "red"}}>{error}</p>
    </div>
   )}
       <form onSubmit={(event) => onSubmit(event)}>
@@ -30,7 +29,7 @@ function UserPerfil({id,onSubmit,name,email,error}) {
         <div className="col-md-6">
           <div className="inputs">
             <label>Nombre</label>
-            <input className="form-control" type="text" placeholder={name} name="name" />
+            <input className="form-control" type="text"  placeholder={name} name="name" />
           </div>
         </div>
         <div className="col-md-6">

@@ -44,6 +44,7 @@ const Profile =  ({params}:{params: {id:string}}) => {
       }
     );
     const responseAPI = await res.json();
+    console.log("status"+res.status)
     if(res.ok){
       // console.log(responseAPI)
       const result = await signIn("credentials", {
@@ -52,6 +53,8 @@ const Profile =  ({params}:{params: {id:string}}) => {
         redirect: false
       });
       handleRedirect("/recetas");
+    }else{
+      setError(responseAPI.message);
     }
   };
   return (
