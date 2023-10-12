@@ -1,16 +1,16 @@
-import prisma from "@/libs/prisma"
+// import prisma from "@/libs/prisma"
 import UserServices from "@/services/userServices"
-import * as bcrypt from "bcrypt"
+// import * as bcrypt from "bcrypt"
 import { NextResponse } from "next/server"
-
+import { userInfo } from "@/interfaces/userInterfaces";
 //definimos interfaz para el cuerpo del request
-interface userInfo{
-    name:string,
-    email:string,
-    password:string,
-    repeatPassword: string,
-    role:string
-}
+// interface userInfo{
+//     name:string,
+//     email:string,
+//     password:string,
+//     repeatPassword: string,
+//     role:string
+// }
 //funcion para registro usuario
 export async function POST (request:Request){
 

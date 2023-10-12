@@ -2,13 +2,17 @@
 import { signJwtAccessToken } from "@/libs/jwt"
 import prisma from "@/libs/prisma"
 import * as bcrypt from "bcrypt"
-import { NextResponse } from "next/server"
+import {  NextResponse } from "next/server"
 // import cookie from "cookie";
 //creamos una interfaz para el cuerpo de la api de inicio de sesión
 interface RequestBody{
     username:string,
     password: string
 }
+interface User{
+    id:string
+}
+
 
 export async function POST(request:Request){
     const response= NextResponse.next()
@@ -50,3 +54,4 @@ export async function POST(request:Request){
         return new Response(JSON.stringify(null))
     }
 }
+

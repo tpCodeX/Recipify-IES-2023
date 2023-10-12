@@ -15,7 +15,7 @@ function SigninButton() {
       <>
       <Link style={{color: 'white'}}href={"/api/recipes/recipe"}>Crear Receta</Link>
       <Link style={{color: 'white'}}href={"/dashboard"}>Dashboard</Link>
-      <Link style={{color: 'white'}}href={`/api/login/signin/${session.user.id}`}>Editar perfil</Link>
+      <Link style={{color: 'white'}}href={`/api/perfil/${session.user.id}`}>Editar perfil</Link>
       {/* <div style={{ color: 'white', cursor: 'pointer' }} onClick={() => router.push(`/api/login/signin/${session.user.id}`)}>
   Editar Perfil
 </div> */}

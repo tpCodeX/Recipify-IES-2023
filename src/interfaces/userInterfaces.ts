@@ -9,5 +9,6 @@ export interface userInfo{
     email:string,
     name:string,
     password:string,
+    repeatPassword?: string,
     role:string,
 }

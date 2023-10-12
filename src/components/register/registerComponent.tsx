@@ -29,7 +29,7 @@ const RegisterComponent = () => {
         }),
       }
     );
-    console.info("estado de resultado "+res.status)
+    // console.info("estado de resultado "+res.status)
     const responseAPI = await res.json();
 
     if (res.status != 201) {

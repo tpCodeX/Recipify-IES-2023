@@ -4,8 +4,18 @@ import prisma from '@/libs/prisma'
 import { compare } from 'bcrypt';
 import { hash } from 'bcrypt';
 class UserServices {
-
-   async compararPassword(password:string, repeatPassword:string){
+//   async validarPasswordYRepeatPassword(password:string, repeatPassword?:string){
+//     if(!password || password===""){
+//         throw new BadRequestException('El password es obligatorio');
+//     }
+//     if(!repeatPassword || repeatPassword===""){
+//         throw new BadRequestException('El repeat password es obligatorio');
+//     }
+//     if(password !== repeatPassword){
+//         throw new BadRequestException('El password y el repeat password deben ser iguales');
+//     }
+// }
+   async compararPassword(password:string, repeatPassword?:string){
     const resultado= password == repeatPassword ? true : false
     return resultado
    }
@@ -77,7 +87,10 @@ class UserServices {
     };
    
     async updateUser(data: userInfo) {
-        const userExiste = await prisma.user.findFirst({ where: { id: data.id } });
+        // console.log("llego a update")
+        const idNumber=Number(data.id)
+        // await this.validarPasswordYRepeatPassword(data.password,data.repeatPassword)
+        const userExiste = await prisma.user.findFirst({ where: { id: idNumber } });
         if (!userExiste) {
           throw new Error("El usuario no existe.");
         }
@@ -86,15 +99,15 @@ class UserServices {
         const comparedEmail = 
         userExiste.email === data.email ? userExiste.email : data.email;
         const newHashedPassword = await this.hashPassword(data.password);
-    
         const updatedUser = await prisma.user.update({
-            where: { id: data.id },
+            where: { id: idNumber },
              data: {
                 email: comparedEmail,
                 name: comparedName,
                 password: newHashedPassword
               },
             });
+        console.log(updatedUser)
         return updatedUser;
       }
 
