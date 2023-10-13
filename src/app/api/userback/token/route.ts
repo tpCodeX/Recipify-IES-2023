@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prisma";
 import { hash } from "bcrypt";
+import UserServices from "@/services/userServices";
 
 interface userInfo {
   password: string;
@@ -10,9 +11,11 @@ interface userInfo {
 
 export async function POST(request: Request) {
   const body: userInfo = await request.json();
-    console.log("token usuario"+body.tokenUsuario)
-  // Hacer logica de contraseñas sin son iguales
-
+  const userServicio= new UserServices()
+  const samePassword= await userServicio.compararPassword(body.password,body.repeatPassword);
+  if(!samePassword){
+     return NextResponse.json({user: null,message: "Las contraseñas deben ser iguales"},{status: 400})
+  }
   const passwordResetToken = await prisma.passwordResetToken.findUnique({
     where: {
       token: body.tokenUsuario,
@@ -21,19 +24,15 @@ export async function POST(request: Request) {
     },
   });
 
-  console.log(passwordResetToken);
-
   if (!passwordResetToken) {
     return NextResponse.json(
-      { user: null, message: "Error al cambiar la contraseña" },
+      { user: null, message: "Solicitud de restablecimiento de token no válida. Intente restablecer su contraseña nuevamente." },
       { status: 400 }
     );
   }
 
-  console.log("password" + body.password);
   const encrypted = await hash(body.password, 12);
 
-  console.log("encriptado" + encrypted);
   const updateUser = prisma.user.update({
     where: { id: passwordResetToken.userId },
     data: {
@@ -53,9 +52,8 @@ export async function POST(request: Request) {
   try {
     await prisma.$transaction([updateUser, updateToken]);
   } catch (err) {
-    console.error("error");
     return NextResponse.json(
-      { user: null, message: "Error al cambiar la contraseña 2" },
+      { user: null, message: "Se produjo un error inesperado. Inténtalo de nuevo y si el problema persiste contacta con soporte." },
       { status: 400 }
     );
   }
@@ -64,5 +62,4 @@ export async function POST(request: Request) {
     { user: updateUser, message: "Usuario modificado con exito" },
     { status: 201 }
   );
-  //   return NextResponse.json(updateUser);
 }

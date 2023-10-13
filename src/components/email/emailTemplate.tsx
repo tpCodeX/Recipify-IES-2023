@@ -5,8 +5,8 @@ interface EmailTemplateProps {
 
 // Arreglar para produccion
 // const PROTOCOL= 'production' ? 'https' : 'http'
-const PROTOCOL= 'http'
-const domain= 'localhost:3000'
+const PROTOCOL= process.env.PROTOCOL
+const domain= process.env.DOMAIN
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
   firstName,
   token,

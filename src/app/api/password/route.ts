@@ -1,41 +1,24 @@
-import { EmailTemplate } from "@/components/email/emailTemplate";
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import prisma from "@/libs/prisma";
-import { randomUUID } from "crypto";
+import TokenService from "@/services/tokenService";
 
 interface userInfo {
   email: string;
 }
 
-const resend = new Resend("re_KTgKnKAN_4sGGckTTejo1fAFLjHhFy7zF");
-
 export async function POST(request: Request) {
   try {
     const body: userInfo = await request.json();
+    const tokenServicio= new TokenService()
     const user = await prisma.user.findFirst({
       where: { email: body.email },
     });
-
-    if (!user) {
-      return NextResponse.json({ error: "User not found" });
+     if(user){
+      const token=tokenServicio.crearToken(user)
+      tokenServicio.enviarEmail(user.email, user.name, (await token).token)
     }
 
-    const token = await prisma.passwordResetToken.create({
-      data: {
-        userId: user.id,
-        token: `${randomUUID()}${randomUUID()}`.replace(/-/g, ""),
-      },
-    });
-    const data = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
-      to: user.email,
-      subject: "Hello world",
-      react: EmailTemplate({ firstName: user.name, token: token.token }),
-      text: "",
-    });
-// Modificar
-    return NextResponse.json(data);
+    return NextResponse.json({user:body.email, message:"Mensaje enviado con exito"},{status: 201});
   } catch (error) {
     return NextResponse.json({ error });
   }
