@@ -17,7 +17,11 @@ function PageEmail() {
       }),
     });
     const data = await res.json();
-    router.push("/api/password/frontEmail/success");
+    if(res.status==201){
+      router.push("/api/password/frontEmail/success");
+    } else{
+      setError(data.message)
+    }
   };
 
   const [email, setEmail] = useState("");

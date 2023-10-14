@@ -23,20 +23,20 @@
       "static/css/app/api/login/signin/page.css",
       "static/chunks/app/api/login/signin/page.js"
     ],
-    "/api/password/frontEmail/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/api/password/frontEmail/page.js"
-    ],
     "/api/password/frontEmail/success/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/password/frontEmail/success/page.js"
     ],
-    "/api/password/frontEmail/success/[token]/page": [
+    "/api/password/frontEmail/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/api/password/frontEmail/success/[token]/page.js"
+      "static/chunks/app/api/password/frontEmail/page.js"
+    ],
+    "/api/register/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/api/register/page.js"
     ],
     "/recetas/page": [
       "static/chunks/webpack.js",
