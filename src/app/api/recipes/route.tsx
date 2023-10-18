@@ -1,6 +1,6 @@
 import RecipeServices from "@/services/recipeServices"
 import { NextResponse } from "next/server"
-
+import prisma from '@/libs/prisma'
 interface RequestBody{
     titulo:string,
     descripcion:string,
@@ -26,4 +26,14 @@ export async function POST(request:Request){
             {message:"bieeen"},
             { status: 200 }
           );
+}
+
+export async function GET(request:Request){
+    const recipes= await prisma.recipe.findMany({
+        include:{
+            author:true
+        }
+    })
+    // console.log(recipes)
+    return NextResponse.json(recipes);
 }

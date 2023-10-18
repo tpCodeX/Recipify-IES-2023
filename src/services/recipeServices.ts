@@ -2,7 +2,11 @@ import prisma from "@/libs/prisma";
 import { iRecipeInfo } from "@/interfaces/recipeInterfaces";
 
 class RecipeServices {
-
+  validarCampos(titulo:string,descripcion:string ,ingredientes:string, categoria:string){
+    if(titulo=="" || descripcion== "" ||ingredientes == "" || categoria == ""){
+      throw new Error("Todos los campos son obligatorios")
+    }
+   }
   async getRecipe() {
     const recipe = await prisma.recipe.findMany({
       include: {
@@ -37,7 +41,7 @@ class RecipeServices {
   }
 
   async addRecipe(title:string, description:string, ingredients:string, categoriaID:string, authorID:string, photo:string) {
-
+    
     const numberCategoria=Number(categoriaID)
     const numberAuthor=Number(authorID)
     const recipeExists = await prisma.recipe.findFirst({

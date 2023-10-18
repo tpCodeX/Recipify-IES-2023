@@ -17,6 +17,7 @@ model User {
   password String
   role String @default("USER")
   posts Recipe[]
+  reviews Review[]
 }
 
 model Recipe {
@@ -31,10 +32,20 @@ model Recipe {
   updatedAt  DateTime   @updatedAt
   categoria Categoria @relation(fields: [categoriaID],references: [id])
   categoriaID Int
+  reviews Review[]
 }
 
 model Categoria {
   id Int @id @default(autoincrement())
   name String
   recipes Recipe[]
+}
+
+model Review {
+  id Int @id @default(autoincrement())
+  rating Int
+  author User @relation(fields: [authorID],references: [id])
+  authorID Int
+  recipe Recipe @relation(fields: [recipeID],references: [id])
+  recipeID Int
 }

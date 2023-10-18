@@ -5,9 +5,5 @@ export interface iRecipeInfo {
     description:string,
     ingredients: string,
     author: string,
-    authorID: number,
-    createdAt: string,
-    updatedAt:  string,
     categoria: string,
-    categoriaID: number
 }
