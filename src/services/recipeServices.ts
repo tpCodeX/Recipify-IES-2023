@@ -62,6 +62,7 @@ class RecipeServices {
         title: title,
         photo: photo,
         description: description as string,
+        rating: 5,
         ingredients: ingredients,
         categoria: { connect: { id: numberCategoria } },
         author: { connect: { id: numberAuthor } }
@@ -71,8 +72,8 @@ class RecipeServices {
     return newRecipe;
   };
 
-  async updateRecipe(id: number, newData: Partial<iRecipeInfo>) {
-    const { title, description, ingredients, categoriaID, authorID } = newData;
+  async updateRecipe(id: number, newData: iRecipeInfo) {
+    const { title, description, ingredients, categoria, author } = newData;
 
     const updatedRecipe = await prisma.recipe.update({
       where: { id },
@@ -80,8 +81,8 @@ class RecipeServices {
         title: title,
         description: description as string,
         ingredients: ingredients,
-        categoria: { connect: { id: categoriaID } },
-        author: { connect: { id: authorID } }
+        categoria: { connect: { id: Number(categoria) } },
+        author: { connect: { id: Number(author) } }
       },
     });
 

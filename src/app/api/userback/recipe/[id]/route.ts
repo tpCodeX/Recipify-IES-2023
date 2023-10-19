@@ -13,7 +13,8 @@ export async function GET(request:NextRequest,{params}:Params){
             id:Number(id)
         },
         include:{
-            author:{ select:{ name:true }}
+            author:{ select:{ name:true }},
+            categoria:{ select:{ name:true }},
         }
     })
     // console.log(recipe)
