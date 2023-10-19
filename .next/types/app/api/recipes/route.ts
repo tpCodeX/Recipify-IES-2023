@@ -1,4 +1,4 @@
-// File: C:\Users\geron\Downloads\PROYECTO FINAL\Recipify-IES-2023\src\app\api\recipes\route.tsx
+// File: C:\Users\ULTRABYTES\Desktop\Nueva carpeta\Recipify\Recipify-IES-2023\src\app\api\recipes\route.tsx
 import * as entry from '../../../../../src/app/api/recipes/route.js'
 import type { NextRequest } from 'next/server.js'
 

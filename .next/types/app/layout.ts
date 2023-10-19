@@ -1,4 +1,4 @@
-// File: C:\Users\geron\Downloads\PROYECTO FINAL\Recipify-IES-2023\src\app\layout.tsx
+// File: C:\Users\ULTRABYTES\Desktop\Nueva carpeta\Recipify\Recipify-IES-2023\src\app\layout.tsx
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
