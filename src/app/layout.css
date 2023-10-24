@@ -7,9 +7,8 @@
 body {
   font-family: 'Lucida Grande', sans-serif;
   background-color: var(--blanco-mate);
-  min-height: 100vh;
   max-width: 100vw;
-  overflow: hidden;
+  overflow: auto;
 }
 
 

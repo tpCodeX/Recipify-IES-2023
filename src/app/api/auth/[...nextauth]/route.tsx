@@ -7,8 +7,8 @@ const handler= NextAuth({
     CredentialsProvider({
         name: "Credentials",
         credentials: {
-          username: { label: "Username", type: "text", placeholder: "jsmith" },
-          password: { label: "Password", type: "password" }
+          email: { label: "email", type: "email", placeholder: "jsmith" },
+          password: { label: "password", type: "password" }
         },
         async authorize(credentials, _req) {
           // Add logic here to look up the user from the credentials supplied
@@ -18,7 +18,7 @@ const handler= NextAuth({
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: credentials?.username,
+                email: credentials?.email,
                 password: credentials?.password
             })
           })

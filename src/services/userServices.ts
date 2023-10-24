@@ -8,8 +8,9 @@ class UserServices {
     const resultado= password == repeatPassword ? true : false
     return resultado
    }
+
    
-    async existeMailEnBaseDedatos(email:string){
+    async findByMail(email:string){
       const emailExiste=  await prisma.user.findFirst({
         where: {email : email}
      })
@@ -56,14 +57,14 @@ class UserServices {
         });
         return updatedUser;
       }
-    async getUserEmail(email: string){
+    async getUserByEmail(email: string){
         const usuario = await prisma.user.findUnique({
             where: {
                 email: email
             }
         })
         if (!usuario) {
-            throw new Error(`Usuario con email ${email} no se ha encontrado`);
+            return undefined;
         }
         return usuario;
     }
@@ -71,7 +72,6 @@ class UserServices {
         return await compare(password,hashedPass)
     }
     async hashPassword(pass:string){
-// 2do parametro se representa la cantidad de rondas de hashing que se utilizarán para generar el hash mientras sea un n° más grande significa más dificil de descifrar
         return await hash(pass,10)
     };
    
@@ -80,10 +80,8 @@ class UserServices {
         if (!userExiste) {
           throw new Error("El usuario no existe.");
         }
-        const comparedName = 
-        userExiste.name === data.name ? userExiste.name : data.name;
-        const comparedEmail = 
-        userExiste.email === data.email ? userExiste.email : data.email;
+        const comparedName = userExiste.name === data.name ? userExiste.name : data.name;
+        const comparedEmail = userExiste.email === data.email ? userExiste.email : data.email;
         const newHashedPassword = await this.hashPassword(data.password);
     
         const updatedUser = await prisma.user.update({
@@ -99,18 +97,40 @@ class UserServices {
 
      async registrarUser(data: userInfo) {
          const hashedPass = await this.hashPassword(data.password);
-         const passwordEncriptadaAString = hashedPass.toString();
          const newUser = await prisma.user.create({
            data: {
              email: data.email.toString(),
              name: data.name.toString(),
-             password: passwordEncriptadaAString,
+             password: hashedPass.toString(),
              country: data.country.toString(),
-             role:data.name?.toString()
+             role:data.role?.toString()
            },
          });
         return newUser;
        }
+
+      async authorizeUser(email:string,password:string){
+        const userExist= await this.getUserByEmail(email);
+        const passwordMatches=await this.compararPassword(password,userExist?.password as string);//matchea la pass
+        if(!userExist || !passwordMatches){
+          return null;
+        }
+        const authorizedUser={
+          id:userExist?.id.toString() as string,
+          name:userExist?.name as string,
+          email:userExist?.email as string,
+          password:userExist?.password as string,
+          country:userExist?.country as string,
+          role:userExist?.role as string,
+        }
+        return authorizedUser
+        
+        
+        //Si el usuario existe y la pass matchea, devuelve true :D
+      }
+
 };
+
+export const userServices = new UserServices();
 
 export default UserServices;
