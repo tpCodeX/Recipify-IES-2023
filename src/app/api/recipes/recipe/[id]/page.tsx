@@ -1,12 +1,10 @@
 "use client"
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 
 const Recipe = ({ params }: { params: { id: string } }) => {
-  const router = useRouter();
   const [idRecipe,setIdRecipe]=useState(0)
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -15,32 +13,31 @@ const Recipe = ({ params }: { params: { id: string } }) => {
   const [rating, setRating] = useState(0);
   const [habilitar,setHabilitar]=useState(false)
   const {data: session}= useSession()
-
+  const [reviewAuthor, SetReviewAuthor] = useState<string | false>();
 
   const handleClick = (value: number) => {
-    setRating(value);
     setHabilitar(true)
     axios.post("http://localhost:3000/api/review",{
       valoracion: value,
       idUsuario:session?.user.id,
       idRecipe:idRecipe
-    }).then((res)=>{
-      // console.log("hola")
-      // console.log(res.data.user)
-      setRating(res.data.user.rating)
     })
   };
 
   useEffect(() => {
     if (params.id) {
       axios
-        .get(`http://localhost:3000/api/userback/recipe/${params.id}`)
+        .get(`http://localhost:3000/api/userback/recipe/${params.id}`, {
+          headers: { idUsuario: session?.user.id },
+        })
         .then((res) => {
           setIdRecipe(res.data.id)
           setTitle(res.data.title);
           setDescription(res.data.description)
           setCategoria(res.data.categoria.name);
           setAuthor(res.data.author.name);
+          setRating(res.data.rating)
+          SetReviewAuthor(res.data.hasRating.rating)
         });
     }
   }, []);
@@ -72,6 +69,7 @@ const Recipe = ({ params }: { params: { id: string } }) => {
       <h2>Categoria : {categoria}</h2>
       <br />
       <h3>Author: {author}</h3>
+      <h1>{reviewAuthor ? "Tu valoracion "+ reviewAuthor : "No has valorado esta receta"}</h1>
     </>
   );
 };

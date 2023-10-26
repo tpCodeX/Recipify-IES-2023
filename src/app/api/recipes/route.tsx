@@ -23,7 +23,7 @@ export async function POST(request:Request){
     recipeServicio.addRecipe(titulo,descripcion,ingredientes,categoria,idUsuario,photo)
 
     return NextResponse.json(
-            {message:"bieeen"},
+            {message:"Receta creada con éxito"},
             { status: 200 }
           );
 }

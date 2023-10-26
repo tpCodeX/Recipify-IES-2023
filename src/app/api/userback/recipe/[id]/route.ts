@@ -8,6 +8,7 @@ interface Params{
 
 export async function GET(request:NextRequest,{params}:Params){
     const id = params.id
+    const idUsuario = request.headers.get('idUsuario')
     const recipe= await prisma.recipe.findFirst({
         where:{
             id:Number(id)
@@ -17,6 +18,15 @@ export async function GET(request:NextRequest,{params}:Params){
             categoria:{ select:{ name:true }},
         }
     })
-    // console.log(recipe)
-    return new Response(JSON.stringify(recipe)) 
+    const hasRating = await prisma.review.findFirst({
+        where: {
+          authorID:Number(idUsuario)
+        },
+      });
+   
+    const response = {
+        ...recipe,
+        hasRating: hasRating ? hasRating : false,
+      };
+    return new Response(JSON.stringify(response)) 
 }
