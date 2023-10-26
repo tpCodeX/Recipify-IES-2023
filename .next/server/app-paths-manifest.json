@@ -1,10 +1,13 @@
 {
-  "/page": "app/page.js",
   "/recetas/page": "app/recetas/page.js",
   "/api/recipes/route": "app/api/recipes/route.js",
+  "/api/userback/route": "app/api/userback/route.js",
   "/api/review/route": "app/api/review/route.js",
-  "/api/login/signin/page": "app/api/login/signin/page.js",
+  "/api/register/page": "app/api/register/page.js",
+  "/api/login/route": "app/api/login/route.js",
+  "/api/recipes/recipe/page": "app/api/recipes/recipe/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/api/login/signin/page": "app/api/login/signin/page.js",
   "/api/recipes/recipe/[id]/page": "app/api/recipes/recipe/[id]/page.js",
   "/api/userback/recipe/[id]/route": "app/api/userback/recipe/[id]/route.js"
 }
