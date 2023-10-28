@@ -11,11 +11,19 @@ function SigninButton() {
   const router= useRouter()
   //si lo coloco en otro componente no me toma bien la sesión para lo que quiero mostrar si esta el usuario logueado
   if(session && session.user){
+    console.log("Este es mi role " + session.user.role)
     return (
       <>
-      <Link style={{color: 'white'}}href={"/api/recipes/recipe"}>Crear Receta</Link>
+      { session.user.role == 'USER' ?  (
+      <div>
+      <Link style={{color: 'white'}}href={"/categoria"}>Añadir Categoría</Link>
       <Link style={{color: 'white'}}href={"/dashboard"}>Dashboard</Link>
-      <Link style={{color: 'white'}}href={`/api/perfil/${session.user.id}`}>Editar perfil</Link>
+      </div>) : 
+      <div>
+        <Link style={{color: 'white'}}href={"/api/recipes/recipe"}>Crear Receta</Link>
+        <Link style={{color: 'white'}}href={`/api/perfil/${session.user.id}`}>Editar perfil</Link>
+      </div>
+      }
       {/* <div style={{ color: 'white', cursor: 'pointer' }} onClick={() => router.push(`/api/login/signin/${session.user.id}`)}>
   Editar Perfil
 </div> */}

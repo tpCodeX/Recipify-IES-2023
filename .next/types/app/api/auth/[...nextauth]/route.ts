@@ -1,4 +1,4 @@
-// File: C:\Users\geron\Downloads\PROYECTO FINAL\Recipify-IES-2023\src\app\api\auth\[...nextauth]\route.tsx
+// File: C:\Users\javi2\Desktop\trabajo final\Recipify-IES-2023\src\app\api\auth\[...nextauth]\route.tsx
 import * as entry from '../../../../../../src/app/api/auth/[...nextauth]/route.js'
 import type { NextRequest } from 'next/server.js'
 

@@ -1,4 +1,4 @@
-// File: C:\Users\geron\Downloads\PROYECTO FINAL\Recipify-IES-2023\src\app\dashboard\page.tsx
+// File: C:\Users\javi2\Desktop\trabajo final\Recipify-IES-2023\src\app\dashboard\page.tsx
 import * as entry from '../../../../src/app/dashboard/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
