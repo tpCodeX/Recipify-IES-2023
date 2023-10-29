@@ -1,18 +1,16 @@
 "use client";
-import React, { useState,useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 function ProductComponent({ onSubmit, categorias }) {
 
   return (
     <form onSubmit={(event) => onSubmit(event)}>
       <div className="input-group input-group-lg">
-        <span className="input-group-text" id="inputGroup-sizing-lg">Titulo</span>
+        <span className="input-group-text" id="inputGroup-sizing-lg">Título</span>
         <input type="text" className="form-control border border-dark" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="titulo" />
       </div>
       <br />
       <div className="input-group input-group-sm mb-3">
-        <span className="input-group-text" id="inputGroup-sizing-sm">Descripcion</span>
+        <span className="input-group-text" id="inputGroup-sizing-sm">Descripción</span>
         <input type="text" className="form-control border border-dark" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="descripcion" />
       </div>
 

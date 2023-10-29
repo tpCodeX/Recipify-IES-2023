@@ -2,7 +2,6 @@
 
 "use client"
 
-// import ProductComponent from '@/components/createProduct/receta';
 import ProductComponent from '@/components/createProduct/receta';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';

@@ -14,16 +14,18 @@ import SignInButton from '../botonSignin/SigninButton'
 
 const NavBar = () => {
 
-    
+   
 
     return (
         <div className='w-screen h-16 sm:h-20 flex items-center justify-evenly p-2 sm:p-0 bg-emerald-400 overflow-hidden md:gap-3' >
-            <div className=' overflow-hidden md:min-w-[200px]'>
-                    <Image src={logo} alt="logo-recipify"  className='hidden pt-2 sm:pt-0 sm:block logo-mobile' width={250} priority={true}/>
+            <Link href='/'>
+            <div className='overflow-hidden md:min-w-[200px]'>
+                    <Image  src={logo} alt="logo-recipify"  className='hidden pt-2 sm:pt-0 sm:block logo-mobile' width={250} priority={true}/>
                     <Image src={logoMobile} alt="logo-recipify"  className='block sm:hidden logo-mobile' width={70} priority/>
             </div>
+            </Link>
             
-        <SearchBar className="items-center mr-2 ml-2 sm:mr-2 sm:ml-0 sm:w-[400px] md:min-w-[450px] lg:w-[700px] xl:w-[800px] 2xl:w-[900px] "></SearchBar>
+        <SearchBar className="items-center mr-2 ml-2 sm:mr-2 sm:ml-0 sm:w-[400px] md:min-w-[450px] lg:w-[700px] xl:w-[800px] 2xl:w-[900px]"></SearchBar>
             
             <Dropdown className='' placement='bottom-end'>
                     <DropdownTrigger className='w-[30px] sm:w-[40px] cursor-pointer sm:mr-2 md:mr-2'>
