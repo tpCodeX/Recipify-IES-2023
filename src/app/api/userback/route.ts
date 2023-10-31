@@ -1,7 +1,9 @@
+import WelcomeApp from "@/components/email/welcome";
 import prisma from "@/libs/prisma"
 import UserServices from "@/services/userServices"
 import * as bcrypt from "bcrypt"
 import { NextResponse } from "next/server"
+import { Resend } from "resend/build/src/resend";
 
 //definimos interfaz para el cuerpo del request
 interface userInfo{
@@ -29,6 +31,15 @@ export async function POST (request:Request){
       return NextResponse.json({user: null,message: "Las contraseñas deben ser iguales"},{status: 400})
    }
    const user= await usuarioServicio.registrarUser(body);
+   const resend = new Resend(process.env.API_KEY);
+
+   await resend.emails.send({
+      from: "Acme <onboarding@resend.dev>",
+      to: body.email,
+      subject: "Recipify",
+      react: WelcomeApp({ name: body.name }),
+      text: "",
+    });
 
    const {password, ...result}= user
    return  NextResponse.json({user:result, message:"usuario creado con exito"},{status: 201})

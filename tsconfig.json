@@ -26,6 +26,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/login/layout.jsx", "src/components/login-component/loginComponent.jsx", "src/components/createProduct/receta.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/login/layout.jsx", "src/components/login-component/loginComponent.jsx", "src/components/createProduct/receta.jsx", "src/components/email/welcome.jsx"],
   "exclude": ["node_modules"]
 }

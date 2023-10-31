@@ -1,10 +1,10 @@
 {
   "/page": "app/page.js",
-  "/api/password/route": "app/api/password/route.js",
-  "/api/password/frontEmail/page": "app/api/password/frontEmail/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/recetas/page": "app/recetas/page.js",
+  "/api/register/page": "app/api/register/page.js",
   "/api/login/signin/page": "app/api/login/signin/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/userback/token/route": "app/api/userback/token/route.js",
-  "/api/password/frontEmail/success/page": "app/api/password/frontEmail/success/page.js",
-  "/api/password/frontEmail/success/[token]/page": "app/api/password/frontEmail/success/[token]/page.js"
+  "/api/userback/dashboard/route": "app/api/userback/dashboard/route.js",
+  "/api/userback/change/premium/route": "app/api/userback/change/premium/route.js",
+  "/api/userback/change/admin/route": "app/api/userback/change/admin/route.js"
 }
