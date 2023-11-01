@@ -1,9 +1,9 @@
 {
   "/page": "app/page.js",
-  "/recetas/page": "app/recetas/page.js",
   "/api/recipes/route": "app/api/recipes/route.js",
   "/api/categorias/route": "app/api/categorias/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
+  "/recetas/page": "app/recetas/page.js",
   "/api/login/signin/page": "app/api/login/signin/page.js",
-  "/api/recipes/recipe/page": "app/api/recipes/recipe/page.js"
+  "/api/recipes/recipe/page": "app/api/recipes/recipe/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }

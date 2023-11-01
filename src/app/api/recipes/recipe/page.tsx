@@ -26,44 +26,30 @@ function Recipe() {
     const titulo=((event.currentTarget.elements.namedItem("titulo") as HTMLInputElement).value)
     const descripcion=((event.currentTarget.elements.namedItem("descripcion") as HTMLInputElement).value)
     const ingredientes=((event.currentTarget.elements.namedItem("ingredientes") as HTMLInputElement).value)
-    // const categoria=((event.currentTarget.elements.namedItem("categoria") as HTMLInputElement).value)
-    // const file=event.currentTarget.elements.namedItem("file")
+    const categoria=((event.currentTarget.elements.namedItem("categoria") as HTMLInputElement).value)
     let idUsuario = session?.user['id']
     let numeroCategoria=1
     const formData = new FormData();
     formData.append("titulo",titulo)
     formData.append("descripcion",descripcion)
     formData.append("ingredientes",ingredientes)
-    formData.append("categoria",String(numeroCategoria))
+    formData.append("categoria",categoria)
     formData.append("idUsuario",String(idUsuario))
     if (file !== null) {
       formData.append("file", file);
     }
      const res = await fetch("http://localhost:3000/api/recipes",{
         method: "POST",
+        //si coloco esto te da error y no te deja guardar. Sino lo coloco, en la consola te dire que falta el header pero todo funciona 
         // headers: {
         //   "Content-Type": "multipart/form-data",
         // },
         body: formData,
       }
     );
-    // const res = await fetch("http://localhost:3000/api/recipes",{
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       titulo,
-    //       descripcion,
-    //       ingredientes,
-    //       categoria,
-    //       idUsuario
-    //     }),
-    //   }
-    // );
-    // if(res.ok){
-    //   router.push("/recetas")
-    // }
+    if(res.ok){
+      router.push("/recetas")
+    }
   };
 
   return (
@@ -86,7 +72,15 @@ function Recipe() {
       </div>
 
       <br />
-      <input
+<select className="form-select border border-dark" aria-label="Default select example" name="categoria">
+        <option value="">Elegir categoria</option>
+        {categorias.map((categoria) => (
+          <option key={categoria.id} value={categoria.id}>{categoria.name}</option>
+        ))}
+      </select>
+      <br />
+<br />
+<input
           type="file"
           onChange={(e) => {
             if (e.target.files && e.target.files.length > 0) {
@@ -94,14 +88,6 @@ function Recipe() {
             }
           }}
         />
-{/* <select className="form-select border border-dark" aria-label="Default select example" name="categoria">
-        <option value="">Elegir categoria</option>
-        {categorias.map((categoria) => (
-          <option key={categoria.id} value={categoria.id}>{categoria.name}</option>
-        ))}
-      </select> */}
-      <br />
-<br />
 <br />
       <br />
       <button className="btn btn-danger" type="submit">Enviar</button>

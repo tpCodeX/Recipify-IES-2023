@@ -34,7 +34,7 @@ const RecetasContainer=()=>{
                 <div >
                     <h3>{receta.title}</h3>
                     <p>{receta.description}</p>
-                    <img src={receta.photo} alt="" width={50} height={50}/>
+                    <img src={receta.photo} alt="" width={100} height={100}/>
                     <p>Rating: {receta.rating}</p>
                     <Link style={{color: 'red'}}href={`/api/recipes/recipe/${receta.id}`}>Ver receta</Link>
                 </div>
