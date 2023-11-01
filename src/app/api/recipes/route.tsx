@@ -18,10 +18,15 @@ cloudinary.config({
   });
 export async function POST(request:NextRequest){
     const data =  await request.formData();
+    const titulo = data.get("titulo") as string;
+  const descripcion = data.get("descripcion") as string;
+  const ingredientes = data.get("ingredientes") as string;
+  const categoria = data.get("categoria") as string;
+  const idUsuario = data.get("idUsuario") as string;
     const image=data.get("file")
     const imageBlob = image as Blob | null;
     let buffer:any
-    // console.log(data)
+    let linkImage
     if (imageBlob) {
         const bytes = await imageBlob.arrayBuffer();
         buffer=Buffer.from(bytes)
@@ -32,27 +37,20 @@ export async function POST(request:NextRequest){
             }
             resolve(result);
             if(result){
-                console.log("link "+ result.secure_url)
+                linkImage= result.secure_url
             }
         }).
         end(buffer);
         });
     }
     
-    // const d=response.secure_url
-    // console.log(data.get("image"))
-    // const response= NextResponse.next()
-    // const body:RequestBody= await request.json()
-    // const titulo=body.titulo
-    // const descripcion=body.descripcion
-    // const ingredientes=body.ingredientes
-    // const categoria=body.categoria
-    // const idUsuario=body.idUsuario
+    
     // const photo="imagen"
-    // const recipeServicio= new RecipeServices()
-
-    // recipeServicio.addRecipe(titulo,descripcion,ingredientes,categoria,idUsuario,photo)
-
+    const recipeServicio= new RecipeServices()
+    
+    if (linkImage) {
+        recipeServicio.addRecipe(titulo, descripcion, ingredientes, categoria, idUsuario, linkImage);
+      }
     // return NextResponse.json(
     //         {message:"Receta creada con éxito"},
     //         { status: 200 }

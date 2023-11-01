@@ -28,10 +28,14 @@ function Recipe() {
     const ingredientes=((event.currentTarget.elements.namedItem("ingredientes") as HTMLInputElement).value)
     // const categoria=((event.currentTarget.elements.namedItem("categoria") as HTMLInputElement).value)
     // const file=event.currentTarget.elements.namedItem("file")
-    const idUsuario = session?.user['id']
-    
+    let idUsuario = session?.user['id']
+    let numeroCategoria=1
     const formData = new FormData();
     formData.append("titulo",titulo)
+    formData.append("descripcion",descripcion)
+    formData.append("ingredientes",ingredientes)
+    formData.append("categoria",String(numeroCategoria))
+    formData.append("idUsuario",String(idUsuario))
     if (file !== null) {
       formData.append("file", file);
     }

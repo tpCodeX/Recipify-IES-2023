@@ -6,28 +6,22 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
     "/error": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/error.js"
-    ],
-    "/recetas/layout": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/recetas/layout.css",
-      "static/chunks/app/recetas/layout.js"
     ],
     "/api/login/signin/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/api/login/signin/page.css",
       "static/chunks/app/api/login/signin/page.js"
+    ],
+    "/recetas/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/recetas/layout.css",
+      "static/chunks/app/recetas/layout.js"
     ],
     "/recetas/page": [
       "static/chunks/webpack.js",
@@ -38,6 +32,12 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/api/recipes/recipe/page.js"
+    ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
     ]
   }
 }
