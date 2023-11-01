@@ -4,7 +4,7 @@ import { compare } from 'bcryptjs';
 import { hash } from 'bcryptjs';
 class UserServices {
 
-   async compararPassword(password:string, repeatPassword:string){
+   async compararPassword(password:string, repeatPassword?:string){
     const resultado= password == repeatPassword ? true : false
     return resultado
    }
@@ -75,25 +75,66 @@ class UserServices {
         return await hash(pass,10)
     };
    
-    async updateUser(data: userInfo) {
-        const userExiste = await prisma.user.findFirst({ where: { id: data.id } });
-        if (!userExiste) {
-          throw new Error("El usuario no existe.");
-        }
-        const comparedName = userExiste.name === data.name ? userExiste.name : data.name;
-        const comparedEmail = userExiste.email === data.email ? userExiste.email : data.email;
+  /////
+  validarCampos(name:string,email:string ,password:string, repeatPassword?:string){
+    if(name=="" || email== "" ||password == "" || repeatPassword == ""){
+      throw new Error("Todos los campos son obligatorios")
+    }
+}
+validarEmail(email:string){
+    return !email || email==="" ? false : email.includes("@")
+}
+compararPasswordYrepeatPassword(password:string, repeatPassword?:string){
+    const resultado=this.compararPassword(password,repeatPassword)
+    if(!resultado){
+      throw new Error("Las contraseñas deben ser iguales")
+    }
+}
+async comprobarEmailSinoError(email:string){
+    if(!this.validarEmail(email)){
+      throw new Error("El email debe contener @")
+  }
+}
+async existNameDatabase(name:string){
+    const nameExiste=  await prisma.user.findFirst({
+      where: {name : name}
+   })
+    if(nameExiste){
+      throw new Error ("El nombre ingresado existe en la base de datos")
+    }
+} 
+async existEmailDatabase(email:string){
+    const emailExiste=  await prisma.user.findFirst({
+      where: {email : email}
+   })
+    if(emailExiste){
+      throw new Error ("El email ingresado existe en la base de datos")
+    }
+  }
+async updateUser(data: userInfo) {
+        this.validarCampos(data.name,data.email,data.password,data.repeatPassword)
+        this.compararPasswordYrepeatPassword(data.password,data.repeatPassword)
+        await this.comprobarEmailSinoError(data.email)
+        await this.existNameDatabase(data.name)
+        await this.existEmailDatabase(data.email)
+        const idNumber=Number(data.id)
         const newHashedPassword = await this.hashPassword(data.password);
-    
         const updatedUser = await prisma.user.update({
-            where: { id: data.id },
+            where: { id: idNumber },
              data: {
-                email: comparedEmail,
-                name: comparedName,
+                email: data.email,
+                name: data.name,
                 password: newHashedPassword
               },
             });
         return updatedUser;
       }
+
+
+
+
+
+  ////
 
      async registrarUser(data: userInfo) {
          const hashedPass = await this.hashPassword(data.password);
