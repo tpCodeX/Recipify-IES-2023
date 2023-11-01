@@ -1,0 +1,13 @@
+.fondo-landing{
+    background-image: url('../../../public/images/fondoVerde.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.fondo-transparente{
+    background: rgba(255, 255, 255, 0.835);
+}
+
+.colorLogo{
+    color: red;
+}

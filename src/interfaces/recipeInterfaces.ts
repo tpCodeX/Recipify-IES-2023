@@ -10,4 +10,10 @@ export interface iRecipeInfo {
     updatedAt:  string,
     categoria: string,
     categoriaID: number
+};
+
+export interface ingredient{
+    id:number|string,
+    name:string,
+    cuantity:string
 }
