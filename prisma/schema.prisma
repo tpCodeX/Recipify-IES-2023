@@ -18,7 +18,18 @@ model User {
   password String
   role String @default("USER")
   posts Recipe[]
+  passwordResetTokens PasswordResetToken[] 
 }
+
+model PasswordResetToken {
+  id        Int       @id @default(autoincrement())
+  token     String    @unique
+  createdAt DateTime  @default(now())
+  resetAt   DateTime?
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+} 
+
 
 model Recipe {
   id Int @id @default(autoincrement())
@@ -39,5 +50,6 @@ model Categoria {
   name String
   recipes Recipe[]
 }
+
 
 

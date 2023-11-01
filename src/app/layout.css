@@ -5,11 +5,12 @@
 }
 
 body {
-  font-family: 'Lucida Grande', sans-serif;
+  font-family: 'Microsoft Sans-Serif', sans-serif;
   background-color: var(--blanco-mate);
   max-width: 100vw;
   overflow: auto;
 }
+
 
 
 
