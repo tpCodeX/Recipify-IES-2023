@@ -22,8 +22,7 @@ const ListaDND = () => {
     return (
         <DndContext
             collisionDetection={closestCenter}
-            onDragEnd={handleDragEnd}
-        >
+            onDragEnd={handleDragEnd}>
             <SortableContext
                 items={ingredients}
                 strategy={verticalListSortingStrategy}>
@@ -32,7 +31,7 @@ const ListaDND = () => {
                     return <ItemLista id={ingredient.id} name={ingredient.name} cuantity={ingredient.cuantity} />
                 })}
                 </div>
-
+            
             </SortableContext>
 
         </DndContext>

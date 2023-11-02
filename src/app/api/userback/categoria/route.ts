@@ -5,6 +5,11 @@ interface Categoria {
     name: string;
 }
 
+export async function GET (_request:Request,_response:NextResponse){
+   const categorias=await prisma.categoria.findMany()
+   return NextResponse.json(categorias)
+}
+
 export async function POST (request:Request){
     const body:Categoria = await request.json()
 

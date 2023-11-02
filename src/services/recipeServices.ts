@@ -36,10 +36,10 @@ class RecipeServices {
     return recipe;
   }
 
-  async addRecipe(title:string, description:string, ingredients:string, categoriaID:string, authorID:string, photo:string) {
+  async addRecipe(title: string,photo:string,description:string,pasos:string,ingredients:string,categoriaID:string,idUsuario:string ) {
 
     const numberCategoria=Number(categoriaID)
-    const numberAuthor=Number(authorID)
+    const numberAuthor=Number(idUsuario)
     const recipeExists = await prisma.recipe.findFirst({
       include: {
         categoria: true
@@ -57,11 +57,12 @@ class RecipeServices {
       data: {
         title: title,
         photo: photo,
-        description: description as string,
+        description:description as string,
+        pasos: pasos,
         ingredients: ingredients,
         categoria: { connect: { id: numberCategoria } },
         author: { connect: { id: numberAuthor } }
-      },
+      }
     });
 
     return newRecipe;

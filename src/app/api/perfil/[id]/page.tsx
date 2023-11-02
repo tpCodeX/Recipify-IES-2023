@@ -4,7 +4,7 @@ import UserPerfil from '@/components/perfilUser/perfilComponent';
 import { useRouter } from "next/navigation";
 import { useEffect} from 'react'
 import axios from "axios";
-import { signIn, signOut } from "next-auth/react";
+import {signOut} from "next-auth/react";
 const Profile =  ({params}:{params: {id:string}}) => {
   const router= useRouter()
   const [name, setName] = useState("");

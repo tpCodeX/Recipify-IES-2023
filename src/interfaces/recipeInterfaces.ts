@@ -1,7 +1,8 @@
 export interface iRecipeInfo {
     id: number,
-    photo:string,
     title: string,
+    photo:string,
+    pasos:string,
     description:string,
     ingredients: string,
     author: string,
