@@ -28,38 +28,78 @@ const TokenComponent = ({ params }: { params: { token: string } }) => {
       }),
     });
     const data = await res.json();
-
-    if (res.status != 201) {
+  
+    if (res.status !== 201) {
       setError(data.message);
-    } else{
-        // setSucces("Su contraseña a sido cambiada exitosamente");
+    } else {
+      // setSucces("Su contraseña a sido cambiada exitosamente");
       router.push("/api/login/signin");
     }
   };
   return (
-    <>
-      {error && (
+<>
+<div className="flex justify-center items-center h-screen">
+      <div className="max-w-md mx-auto p-6 border border-gray-300 rounded-md mt-8 ">
+        <h2 className="text-white text-xl mb-4 font-bold ">
+          Restablecimiento de Contraseña
+        </h2>
+ {error && (
         <div className="mb-2">
           <h1>{error}</h1>
         </div>
       )}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Contraseña:
+            </label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Ingrese su contraseña"
+              className="w-full border border-gray-300 p-2 rounded-md"
+             value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Repetir contraseña"
-          value={repeatPassword}
-          onChange={(e) => setRepeatPassword(e.target.value)}
-        />
-        <button type="submit">Enviar</button>
-      </form>
-    </>
-  );
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-gray-700 text-sm font-bold mb-2"
+            >
+              Confirmar Contraseña:
+            </label>
+            <input
+              id="confirmPassword"
+              type="password"
+              placeholder="Confirme su contraseña"
+              className="w-full border border-gray-300 p-2 rounded-md"
+            value={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
+            />
+          </div>
+          <div className="mb-4 flex justify-between">
+            <button
+              type="button"
+              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Volver Atrás
+            </button>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Confirmar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+</>
+ );
 };
 
-export default TokenComponent;
+export default TokenComponent; 

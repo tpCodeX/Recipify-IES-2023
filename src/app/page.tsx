@@ -6,13 +6,8 @@ const MainSection = ()=>{
      
   return <main className="min-h-screen min-w-full">
           
-
-
-
-
-          <LinkButton path='/recetas/crear' text='Crear Receta'/>
-          
-          <LinkButton path='/recetas' text='Ver Recetas'/>
+          <LinkButton path='/recetas' text='Ver Recetas' />
+          <LinkButton path='/recetas/crear' text='Crear Receta' />
       
     
           </main>

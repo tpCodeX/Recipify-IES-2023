@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 
 function LoginForm() {
@@ -28,8 +29,11 @@ function LoginForm() {
     }
   }
 
-  const handleRedirection=()=>{
+  const handleRedirectionRegister=()=>{
     return router.push("/api/register")
+  }
+  const handleRedirectionContra=()=>{
+    return router.push("/api/password/frontEmail")
   }
 
   return (
@@ -63,8 +67,8 @@ function LoginForm() {
 
         <button type="submit" className="bg-lime-600 text-white text-3xl w-[150px] self-center rounded-lg p-1">Ingresar</button>
 
-        <p className='text-center'>¿No tenés cuenta? <a onClick={handleRedirection} className='text-blue-500 cursor-pointer'>¡Registrate!</a></p>
-
+        <p className='text-center'>¿No tenés cuenta? <a onClick={handleRedirectionRegister} className='text-blue-500 cursor-pointer'>¡Registrate!</a></p>
+        <p className='text-center'>Olvidé mi contraseña <a onClick={handleRedirectionContra} className='text-blue-500 cursor-pointer'>¡Recuperala!</a></p>
     </form>
   );
 }
