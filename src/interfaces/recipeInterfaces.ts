@@ -18,3 +18,7 @@ export interface ingredient{
     name:string,
     cuantity:string
 }
+
+export interface iSearchedRecipe{
+    searchedWords:string,
+}

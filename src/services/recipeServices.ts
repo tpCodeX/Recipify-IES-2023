@@ -36,6 +36,29 @@ class RecipeServices {
     return recipe;
   }
 
+  async searchRecipe(recipeName: string){
+    if (!recipeName) {
+      throw new Error(
+        "Error 409. No se recibe el ID."
+      );
+    };
+
+    const searchResults=await prisma.recipe.findMany({
+      where:{
+        title:{
+          contains:recipeName as string,
+        }
+      },
+      include: {
+        author: { select: { name: true } },
+        categoria: { select: { name: true } },
+      },
+    });
+    if(searchResults) return searchResults
+    throw new Error("Error 409. No data provided ahreloco"); //cambiar el error xd
+
+  }
+
   async addRecipe(title: string,photo:string,description:string,pasos:string,ingredients:string,categoriaID:string,idUsuario:string ) {
 
     const numberCategoria=Number(categoriaID)

@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest} from "next/server";
 
 import prisma from "@/libs/prisma";
 interface Params {
   params: { id: string };
 }
-export async function GET(request: NextRequest, { params }: Params) {
+export async function GET(_request: NextRequest, { params }: Params) {
   const id = 
 params.id
 ;
