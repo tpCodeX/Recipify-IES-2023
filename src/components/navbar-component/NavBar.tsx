@@ -3,7 +3,8 @@ import logo from '../../../public/images/navbar-icon.svg'
 import logoMobile from '../../../public/images/iconito.png'
 import './NavBar.css'
 import { useSession } from 'next-auth/react'
-import { Link, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, dropdownItem } from '@nextui-org/react'
+import {Link,Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from '@nextui-org/react'
+import NextLink from 'next/link'
 import Image from 'next/image'
 import SearchBar from './searchbar-component/SearchBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -45,12 +46,14 @@ const NavBar = () => {
 
     if (session && session.user) {
         return (
-            <div data-testid="NavBar" id='NavBar' className='w-screen h-16 sm:h-20 flex items-center justify-evenly p-2 sm:p-0 bg-emerald-400 overflow-hidden md:gap-3' >
-                <Link href='/'>
+            <div data-testid="NavBar" id='NavBar' className='w-screen sm:w-screen md:w-screen h-16 sm:h-20 flex items-center justify-evenly p-2 sm:p-0 bg-emerald-400 overflow-hidden md:gap-3 overflow-x-hidden' >
+                <Link>
+                <NextLink  href='/'>
                     <div className='overflow-hidden md:min-w-[200px]'>
                         <Image src={logo} alt="logo-recipify" className='hidden pt-2 sm:pt-0 sm:block logo-mobile' width={250} priority={true} />
                         <Image src={logoMobile} alt="logo-recipify" className='block sm:hidden logo-mobile' width={70} priority />
                     </div>
+                </NextLink>
                 </Link>
 
                 <SearchBar className="items-center mr-2 ml-2 sm:mr-2 sm:ml-0 sm:w-[400px] md:min-w-[450px] lg:w-[700px] xl:w-[800px] 2xl:w-[900px]"></SearchBar>
@@ -75,7 +78,7 @@ const NavBar = () => {
         )
     }
     return (
-        <div id='NavBar' data-testid="NavBar"  className='w-screen h-16 sm:h-20 flex items-center justify-evenly p-2 sm:p-0 bg-emerald-400 overflow-hidden md:gap-3' >
+        <div id='NavBar' data-testid="NavBar"  className='max-w-screen h-16 sm:h-20 flex items-center justify-evenly p-2 sm:p-0 bg-emerald-400 overflow-hidden md:gap-3 overflow-x-hidden' >
             <Link href='/'>
                 <div className='overflow-hidden md:min-w-[200px]'>
                     <Image src={logo} alt="logo-recipify" className='hidden pt-2 sm:pt-0 sm:block logo-mobile' width={250} priority={true} />

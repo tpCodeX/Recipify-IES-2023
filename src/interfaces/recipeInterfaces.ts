@@ -1,3 +1,6 @@
+import { categoriasInterface } from "./categoriasInterface"
+import { IuserInfo } from "./userInterfaces"
+
 export interface iRecipeInfo {
     id: number,
     title: string,
@@ -5,11 +8,11 @@ export interface iRecipeInfo {
     pasos:string,
     description:string,
     ingredients: string,
-    author: string,
+    author: IuserInfo,
     authorID: number,
     createdAt: string,
     updatedAt:  string,
-    categoria: string,
+    categoria: string|categoriasInterface,
     categoriaID: number
 };
 

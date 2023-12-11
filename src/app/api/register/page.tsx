@@ -1,13 +1,12 @@
 
 
 import RegisterComponent from '@/components/register/registerComponent'
-import React from 'react'
 
 function Register() {
   return (
-   <>
+   <div className='sm:mb-[165px]'>
    <RegisterComponent/>
-   </>
+   </div>
   )
 }
 

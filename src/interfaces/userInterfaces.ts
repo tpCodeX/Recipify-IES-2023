@@ -4,7 +4,7 @@ export interface userLogin{
 }
 
 
-export interface userInfo{
+export interface IuserInfo{
     id?:number,
     email:string,
     name:string,
@@ -13,4 +13,5 @@ export interface userInfo{
     country:string,
     role:string,
 }
+
 

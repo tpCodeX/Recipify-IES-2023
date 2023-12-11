@@ -116,6 +116,29 @@ class RecipeServices {
     return deletedRecipe;
   };
 
+  async getRecetasConAutor(){
+
+    const recipes = await prisma.recipe.findMany({
+      include: {
+        author:true,
+        categoria:true
+      }
+    });
+    return recipes;
+  };
+
+  async parsearData(){
+    const data = await this.getRecetasConAutor();
+    console.log(data);
+
+    return data;
+
+  }
+
+
+
+
+
 };
 
 export default RecipeServices;

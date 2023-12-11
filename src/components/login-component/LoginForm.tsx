@@ -3,7 +3,6 @@ import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 
 function LoginForm() {
@@ -37,9 +36,9 @@ function LoginForm() {
   }
 
   return (
-    <form action="/login" className='flex flex-col rounded-md gap-10 bg-green-100 w-[300px] sm:w-[425px] p-5 m-auto mt-10' onSubmit={handleSubmit(onSubmit)}>
-
-      
+    <form action="/login" 
+    className='flex flex-col rounded-md gap-10 bg-green-100 w-[300px] sm:w-[425px] py-4 px-10 m-auto mt-10' 
+    onSubmit={handleSubmit(onSubmit)}>
       {error && (
         <p className=''>Error: Credenciales Incorrectas</p>
       )} 

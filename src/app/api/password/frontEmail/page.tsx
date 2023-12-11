@@ -7,7 +7,7 @@ function PageEmail() {
   const [error, setError] = useState();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const res = await fetch("http://localhost:3000/api/password", {
+    const res = await fetch("http://192.168.1.40:3000/api/password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

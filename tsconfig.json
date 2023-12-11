@@ -26,6 +26,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts","@testing-library/jest-dom@5.16.5","@testing-library/react","@testing-library/jest-dom@5.16.5"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts","@testing-library/jest-dom@5.16.5","@testing-library/react","@testing-library/jest-dom@5.16.5", "src/components/email/welcome.jsx"],
   "exclude": ["node_modules"]
 }

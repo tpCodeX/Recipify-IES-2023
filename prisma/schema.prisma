@@ -25,6 +25,7 @@ model User {
   role String @default("USER")
   posts Recipe[]
   passwordResetTokens PasswordResetToken[] 
+  reviews Review[]
 }
 
 model PasswordResetToken {
@@ -42,14 +43,16 @@ model Recipe {
   title String
   photo String
   description String
+  rating Int
   pasos String
-  ingredients String //SQLITE NO PERMITE LISTAS, ASI QUE VAMOS A TENER QUE USAR UN STRING SEPARADO POR COMAS HASTA PASARLO A MONGO XD
+  ingredients String 
   author User @relation(fields: [authorID],references: [id])
   authorID Int
   createdAt DateTime @default(now())
   updatedAt  DateTime   @updatedAt
   categoria Categoria @relation(fields: [categoriaID],references: [id])
   categoriaID Int
+  reviews Review[] 
 }
 
 model Categoria {
@@ -59,4 +62,12 @@ model Categoria {
 }
 
 
+model Review {
+  id Int @id @default(autoincrement())
+  rating Int @default(0)
+  author User @relation(fields: [authorID],references: [id])
+  authorID Int
+  recipe Recipe @relation(fields: [recipeID],references: [id])
+  recipeID Int
+}
 

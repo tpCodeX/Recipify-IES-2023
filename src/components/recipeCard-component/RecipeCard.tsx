@@ -1,23 +1,46 @@
 import Link from 'next/link'
 import './RecipeCard.css'
+import {categoriasInterface} from '@/interfaces/categoriasInterface'
 import Image from 'next/image'
-
-const RecipeCard = ({ id, title, photo, pasos, description, ingredients, author, categoria }: { id: number, title: string, photo: string, pasos: string, description: string, ingredients: string, author: string, categoria: string }) => {
+import { IuserInfo } from '@/interfaces/userInterfaces'
+const RecipeCard = ({ id, title, photo, description, author, categoria }: { id: number, title: string, photo: string, description: string, author: IuserInfo, categoria:categoriasInterface}) => {
 
     return (
-        <section className='card-container bg-violet-300 w-full min-h-[200px] sm:w-[500px] sm:min-h-[650px] flex sm:flex-col rounded-lg overflow-hidden shadow-xl'>
-            <div className='image-container max-w-[40%]  sm:max-w-full sm:max-h-[300px] '>
-                <Image className='h-full w-full object-fill' src={photo} alt='Foto - receta' width={500} height={500}></Image>
+        <section className='flex flex-col w-[500px] h-[750px] bg-green-200 rounded-2xl border-none border-[3px] hover:border-green-900 shadow-lg shadow-black hover:shadow-green-900 overflow-hidden '>
+            <div className='w-full h-[300px] self-center border-none'>
+                <Image className='w-full h-full  object-cover border-none ' src={photo} alt='Foto - receta' width={500} height={500}></Image>
             </div>
-            <div className="content-containers max-w-[60%] sm:max-w-[100%] flex flex-col text-left items-center p-3">
-                <span>{categoria}</span>
-                <h2 className='text-xl'>{title}</h2>
-                <span>Subida el 6/6/6 por {author}</span>
-                <p>{description}</p>
-                <p>{pasos}</p>
-                <p>{ingredients}</p>
+            <div className='relative self-center text-center pt-[3px] pb-[8px] w-full h-[50px] bg-neutral-600 '>
+                <p className='text-3xl text-neutral-200'>{title}</p>
             </div>
-            <Link className="text-red-500" href={`/recetas/${id}`}>Ver receta</Link>
+
+            <div className="felx flex-col w-full h-[250px] overflow-hidden ">
+
+                <div className=' text-slate-600 flex flex-col p-4 h-[250px]'>
+                    <p className=' text-slate-900 text-xl font-bold'>Descripción</p>
+                    <p className='pl-6  text-left first-letter:text-slate-950 first-letter:font-bold first-letter:uppercase'>
+                        {description}
+                    </p>
+                </div>
+
+            </div>
+            <div className='flex justify-evenly items-center h-[50px] w-full '>
+                <p className='text-center'><span className='text-slate-900 font-bold'>Categoría:</span> <span className='font-mediums'>{categoria.name}</span> </p>
+                <p className='text-center'><span className='text-slate-900 font-bold'>Subida el:</span> <span className='font-medium'>6/6/6 por</span> <Link href={`/`}><span className='text-slate-900 font-bold'>{author.name}</span></Link></p>
+            </div>
+            <div className=' h-[100px] w-full flex justify-evenly items-center p-3'>
+                <Link className='no-underline hover:text-inherit text-inherit' href={`/recetas/${id}`}>
+                    <div className='bg-neutral-600 h-[50px] w-[125px] flex flex-col justify-center items-center rounded-xl text-xl shadow-xl hover:translate-y-[-10px] transition-all hover:scale-110'>
+                        <p className='text-neutral-200'>Ver Receta</p>
+                    </div>
+                </Link>
+                <Link className='no-underline hover:text-inherit text-inherit' href={`/users/${id}`}>
+                    <div className='bg-neutral-600 h-[50px] w-[125px] flex flex-col justify-center items-center rounded-xl text-xl shadow-xl hover:translate-y-[-10px] transition-all hover:scale-110'>
+                        <p className='text-neutral-200 '>Ver Cocinero</p>
+                    </div>
+                </Link>
+            </div>
+
         </section>
     )
 }

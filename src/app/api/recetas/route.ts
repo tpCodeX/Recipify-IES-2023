@@ -1,7 +1,9 @@
 import RecipeServices from "@/services/recipeServices";
 import { NextRequest, NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
-import prisma from "@/libs/prisma";
+import { verifyJwt } from "@/libs/jwt";
+
+const recipeServicio = new RecipeServices();
 
 cloudinary.config({
   cloud_name: "dseagqpd0",
@@ -9,7 +11,7 @@ cloudinary.config({
   api_secret: "MCLCr24PMzwAQd0XnFi7Uy-lRFM",
 });
 export async function POST(request: NextRequest) {
-  console.log("POST ANDANDING")
+  
   const data = await request.formData();
   const titulo = data.get("title") as string;
   const descripcion = data.get("description") as string;
@@ -37,6 +39,7 @@ export async function POST(request: NextRequest) {
         })
         .end(buffer);
     });
+    console.log(response , "response de otra cosa xd")
   }
 
   const recipeServicio = new RecipeServices();
@@ -60,10 +63,29 @@ export async function POST(request: NextRequest) {
 
 
 export async function GET(request: Request) {
-  const recipes = await prisma.recipe.findMany({
-    include: {
-      author: true,
-    },
-  });
+  //verificamos si el token está en el encabezado
+  // let response = NextResponse.next()
+  // const accessToken = request.headers.get("authorization");
+  //si el token no esta o no es válido (no podemos verificarlo) devolvemos un 401
+  // if (!accessToken || !verifyJwt(accessToken)) {
+  //   return new Response(
+  //     JSON.stringify({
+  //       error: "No autorizado",
+  //     }),
+  //     {
+  //       status: 401,
+  //     }
+  //   );
+  // }
+
+    const recipes =await recipeServicio.getRecetasConAutor();
+  
+
+  //Sacar PASSWORD de la respuesta.
+
+  // const data=recipes.map(recipe =>{
+
+  // })
+  
   return NextResponse.json(recipes);
 } 
