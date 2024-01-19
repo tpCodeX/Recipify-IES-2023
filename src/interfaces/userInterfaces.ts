@@ -4,7 +4,7 @@ export interface userLogin{
 }
 
 
-export interface IuserInfo{
+export interface IUserInfo{
     id?:number,
     email:string,
     name:string,

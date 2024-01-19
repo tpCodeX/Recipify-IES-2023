@@ -12,7 +12,7 @@ const Profile =  ({params}:{params: {id:string}}) => {
   const [error, setError] = useState("");
   useEffect(() => {
    if(params.id){
-    axios.get(`http://192.168.1.40:3000/api/userback/perfil/${params.id}`).then((res)=>{
+    axios.get(`http://localhost:3000/api/userback/perfil/${params.id}`).then((res)=>{
       setName(res.data.name)
       setEmail(res.data.email)
     })
@@ -28,7 +28,7 @@ const Profile =  ({params}:{params: {id:string}}) => {
     const email=((event.currentTarget.elements.namedItem("email") as HTMLInputElement).value)
     const password=((event.currentTarget.elements.namedItem("password") as HTMLInputElement).value)
     const repeatPassword=((event.currentTarget.elements.namedItem("repeatPassword") as HTMLInputElement).value)
-    const res = await fetch("http://192.168.1.40:3000/api/userback/perfil",{
+    const res = await fetch("http://localhost:3000/api/userback/perfil",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -57,7 +57,7 @@ import { useRouter } from "next/navigation";
     if (file !== null) {
       formData.append("file", file);
     }
-    const res = await fetch("http://192.168.1.40:3000/api/recetas",{
+    const res = await fetch("http://localhost:3000/api/recetas",{
       method: "POST",
       // headers: {
         //   "Content-Type": "multipart/form-data",

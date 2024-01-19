@@ -12,7 +12,7 @@ function Recipe() {
   const router= useRouter() 
   useEffect(() => {
     const fetchCategorias = async () => {
-      const res = await fetch("http://192.168.1.40:3000/api/categorias");
+      const res = await fetch("http://localhost:3000/api/categorias");
       const data = await res.json();
       setCategorias(data)
     };
@@ -27,7 +27,7 @@ function Recipe() {
     const categoria=((event.currentTarget.elements.namedItem("categoria") as HTMLInputElement).value)
     const idUsuario = session?.user['id']
 
-    const res = await fetch("http://192.168.1.40:3000/api/recipes",{
+    const res = await fetch("http://localhost:3000/api/recipes",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

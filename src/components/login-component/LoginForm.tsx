@@ -3,16 +3,20 @@ import { useRef, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation';
+import {ThreeDots } from 'react-loading-icons'
+
 
 
 function LoginForm() {
   const router = useRouter()
   const email = useRef("");
   const pass = useRef("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const { handleSubmit } = useForm()
 
   const onSubmit = async () => {
+    setLoading(true);
     const result = await signIn("credentials", {
       email: email.current,
       password: pass.current,
@@ -24,6 +28,7 @@ function LoginForm() {
         router.push(result.url);
       } else {
         setError(true);
+        setLoading(false)
       }
     }
   }
@@ -36,12 +41,15 @@ function LoginForm() {
   }
 
   return (
-    <form action="/login" 
+    <form action="/login"
     className='flex flex-col rounded-md gap-10 bg-green-100 w-[300px] sm:w-[425px] py-4 px-10 m-auto mt-10' 
     onSubmit={handleSubmit(onSubmit)}>
-      {error && (
-        <p className=''>Error: Credenciales Incorrectas</p>
-      )} 
+      {error && (<p className='text-red-700 text-center'> <span className='font-bold'>Error:</span> Credenciales Incorrectas</p>)} 
+      {loading && 
+      <div className='flex items-center justify-center'>
+        <ThreeDots fill='#34D399' />
+      </div>
+      }
       <div>
       <h1 className='text-center text-4xl text-teal-900'>Iniciá Sesión</h1>
       <p className='text-center text-teal-900 text-xl'>¿Listo para cocinar?</p>

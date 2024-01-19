@@ -16,7 +16,7 @@ const TokenComponent = ({ params }: { params: { token: string } }) => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const res = await fetch("http://192.168.1.40:3000/api/userback/token", {
+    const res = await fetch("http://localhost:3000/api/userback/token", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

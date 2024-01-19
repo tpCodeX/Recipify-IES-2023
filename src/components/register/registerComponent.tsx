@@ -1,11 +1,12 @@
 "use client";
 
+import {ThreeDots } from 'react-loading-icons'
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const RegisterComponent = () => {
-  //   const [error, setError] = useState();
+    const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +18,8 @@ const RegisterComponent = () => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const res = await fetch("http://192.168.1.40:3000/api/userback", {
+    setLoading(true);
+    const res = await fetch("http://localhost:3000/api/userback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,6 +46,7 @@ const RegisterComponent = () => {
         password: password,
         redirect: false
       });
+
       handleRedirect("/recetas");
       console.log("result", result);
     }
@@ -55,6 +58,11 @@ const RegisterComponent = () => {
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col rounded-md bg-green-100 w-[300px] sm:w-[450px] m-auto  mt-5 gap-5 p-5'>
+    {loading && 
+      <div className='flex items-center justify-center'>
+        <ThreeDots fill='#34D399' />
+      </div>
+      }
       <h1 className='text-center text-3xl sm:text-4xl text-teal-900'>¡Registrate Ahora!</h1>
 
       <div className="self-center">
@@ -121,6 +129,8 @@ const RegisterComponent = () => {
       <button type="submit" className="bg-lime-600 text-white text-3xl w-[190px] self-center rounded-lg p-1">Registrarse</button>
 
       <p className='text-center'>¿Ya tenés cuenta? <a onClick={handleRedirection} className='text-blue-500 cursor-pointer'>¡Ingresá!</a></p>
+      
+
     </form>
   );
 };

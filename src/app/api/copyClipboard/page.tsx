@@ -10,7 +10,7 @@ const CopyToClipboardButton = ({ url }: CopyToClipboardButtonProps) => {
   };
 
   return (
-    <button onClick={copyToClipboard}>Copiar enlace al portapapeles</button>
+    <button className="font-bold cursor-pointer" onClick={copyToClipboard}>Copiar Enlace</button>
   );
 };
 

@@ -1,23 +1,23 @@
-import { userInfo } from "@/interfaces/userInterfaces";
+import { IUserInfo } from "@/interfaces/userInterfaces";
 import prisma from '@/libs/prisma'
 import { compare } from 'bcryptjs';
 import { hash } from 'bcryptjs';
-class UserServices {
 
+class UserServices {
    async compararPassword(password:string, repeatPassword?:string){
     const resultado= password == repeatPassword ? true : false
     return resultado
    }
-
+    dbHelper = prisma
    
     async findByMail(email:string){
-      const emailExiste=  await prisma.user.findFirst({
+      const emailExiste=  await this.dbHelper.user.findFirst({
         where: {email : email}
      })
      return emailExiste
     }
     async existeNameEnBaseDedatos(name:string){
-      const nameExiste=  await prisma.user.findFirst({
+      const nameExiste=  await this.dbHelper.user.findFirst({
         where: {name : name}
      })
      return nameExiste
@@ -29,14 +29,14 @@ class UserServices {
         return !pass||pass===""? false:true
     }
     async getUsers() {
-        const users: userInfo[] = await prisma.user.findMany();
+        const users: IUserInfo[] = await this.dbHelper.user.findMany();
         if (!users) {
           throw new Error("Error 404: Lamentamos informar que no se pudo encontrar los usuarios");
         }
         return users;
       }
     async getUserId(id: number){
-        const usuario = await prisma.user.findUnique({
+        const usuario = await this.dbHelper.user.findUnique({
             where: {
                 id: Number(id)
             }
@@ -46,19 +46,19 @@ class UserServices {
         }
         return usuario;
     }
-    async giveRole({ id, role }: userInfo) {
-        const userExiste = await prisma.user.findFirst({ where: { id: id } });
+    async giveRole({ id, role }: IUserInfo) {
+        const userExiste = await this.dbHelper.user.findFirst({ where: { id: id } });
         if (!userExiste) {
           throw new Error("No se pudo encontrar al usuario al cual le querés cambiar dar un rol");
         }
-        const updatedUser = await prisma.user.update({
+        const updatedUser = await this.dbHelper.user.update({
           where: { id: id },
           data: { role: role },
         });
         return updatedUser;
       }
     async getUserByEmail(email: string){
-        const usuario = await prisma.user.findUnique({
+        const usuario = await this.dbHelper.user.findUnique({
             where: {
                 email: email
             }
@@ -96,7 +96,7 @@ async comprobarEmailSinoError(email:string){
   }
 }
 async existNameDatabase(name:string){
-    const nameExiste=  await prisma.user.findFirst({
+    const nameExiste=  await this.dbHelper.user.findFirst({
       where: {name : name}
    })
     if(nameExiste){
@@ -104,14 +104,14 @@ async existNameDatabase(name:string){
     }
 } 
 async existEmailDatabase(email:string){
-    const emailExiste=  await prisma.user.findFirst({
+    const emailExiste=  await this.dbHelper.user.findFirst({
       where: {email : email}
    })
     if(emailExiste){
       throw new Error ("El email ingresado existe en la base de datos")
     }
   }
-async updateUser(data: userInfo) {
+async updateUser(data: IUserInfo) {
         this.validarCampos(data.name,data.email,data.password,data.repeatPassword)
         this.compararPasswordYrepeatPassword(data.password,data.repeatPassword)
         await this.comprobarEmailSinoError(data.email)
@@ -119,7 +119,7 @@ async updateUser(data: userInfo) {
         await this.existEmailDatabase(data.email)
         const idNumber=Number(data.id)
         const newHashedPassword = await this.hashPassword(data.password);
-        const updatedUser = await prisma.user.update({
+        const updatedUser = await this.dbHelper.user.update({
             where: { id: idNumber },
              data: {
                 email: data.email,
@@ -136,9 +136,9 @@ async updateUser(data: userInfo) {
 
   ////
 
-     async registrarUser(data: userInfo) {
+     async registrarUser(data: IUserInfo) {
          const hashedPass = await this.hashPassword(data.password);
-         const newUser = await prisma.user.create({
+         const newUser = await this.dbHelper.user.create({
            data: {
              email: data.email.toString(),
              name: data.name.toString(),
