@@ -4,6 +4,7 @@ import {ThreeDots } from 'react-loading-icons'
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import axios from 'axios';
 
 const RegisterComponent = () => {
     const [loading, setLoading] = useState(false);
@@ -31,8 +32,7 @@ const RegisterComponent = () => {
         repeatPassword,
         country,
       }),
-    }
-    );
+    })
     console.info("estado de resultado " + res.status)
     const responseAPI = await res.json();
     console.log("responseApi:", responseAPI);

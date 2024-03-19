@@ -42,7 +42,7 @@ function UserPerfil({id,onSubmit,name,email,error}) {
 
       <div className="mt-3 gap-2 d-flex justify-content-end">
         <button className="px-3 btn btn-sm btn-outline-danger">Atrás</button>
-        <button className="px-3 btn btn-sm btn-primary" type="submit">Save</button>
+        <button className="px-3 btn btn-sm btn-primary" type="submit">Enviar</button>
       </div>
       </form>
     </div>

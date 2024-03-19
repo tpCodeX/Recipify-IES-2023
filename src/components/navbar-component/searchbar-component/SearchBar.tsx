@@ -97,7 +97,7 @@ const SearchBar = ({ className }: { className: string }) => {
                         input: "text-small",
                         inputWrapper: "h-full font-normal text-default-500 bg-white dark:bg-default-500/20",
                     }}
-                    placeholder="¿Qué tenés en la heladera?"
+                    placeholder="¿Qué tenes en la heladera?"
                     size="md"
                     onClear={() => setSearchedRecipes([])}
                     // startContent={<button type='submit'><SearchIcon size={18} width={18} height={18} /></button>}

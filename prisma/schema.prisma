@@ -5,16 +5,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url = env("VERCELDB_PRISMA_URL") // uses connection pooling
-  directUrl = env("VERCELDB_URL_NON_POOLING") // uses a direct connection
-}
-
 // datasource db {
-//   provider = "sqlite"
-//   url      = env("DATABASE_URL")
+//   provider = "postgresql"
+//   url = env("VERCELDB_PRISMA_URL") // uses connection pooling
+//   directUrl = env("VERCELDB_URL_NON_POOLING") // uses a direct connection
 // }
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
 
 model User {
   id Int @id @default(autoincrement())
@@ -43,7 +43,7 @@ model Recipe {
   title String
   photo String
   description String
-  rating Int
+  rating Int @default(0)  //Esto tiene que ser autonomo
   pasos String
   ingredients String 
   author User @relation(fields: [authorID],references: [id])
